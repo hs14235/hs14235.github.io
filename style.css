@@ -33,9 +33,43 @@ body {
 
 #skills {
   background: linear-gradient(to right, #b24592, #f15f79);
-  position: relative;
-  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
+
+.bubble-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px;
+  max-width: 80vw;
+  padding: 1rem;
+}
+
+.bubble {
+  background-color: rgba(255, 255, 255, 0.15);
+  color: white;
+  padding: 12px 20px;
+  border-radius: 30px;
+  font-weight: bold;
+  font-size: 1rem;
+  backdrop-filter: blur(5px);
+  transition: transform 0.3s ease;
+  animation: float 6s ease-in-out infinite;
+}
+
+.bubble:hover {
+  transform: scale(1.1);
+  background-color: rgba(255, 255, 255, 0.3);
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+}
+
 
 #projects { background: linear-gradient(to right, #4568dc, #b06ab3); }
 #experience  { background: linear-gradient(to right, #0f2027, #203a43, #2c5364); }

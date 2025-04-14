@@ -45,4 +45,29 @@ document.querySelectorAll('.section').forEach(section => {
       scrollIndicator.style.opacity = 1;
     }
   });
-  
+  // Smooth one-section-at-a-time scroll behavior
+let isScrolling = false;
+const sections = document.querySelectorAll('.section');
+let currentSection = 0;
+
+function scrollToSection(index) {
+  if (index < 0 || index >= sections.length) return;
+
+  isScrolling = true;
+  sections[index].scrollIntoView({ behavior: 'smooth' });
+
+  setTimeout(() => {
+    isScrolling = false;
+    currentSection = index;
+  }, 1000); // Delay prevents rapid scroll jumps
+}
+
+window.addEventListener('wheel', (e) => {
+  if (isScrolling) return;
+
+  if (e.deltaY > 0) {
+    scrollToSection(currentSection + 1);
+  } else {
+    scrollToSection(currentSection - 1);
+  }
+});

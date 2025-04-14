@@ -1,32 +1,87 @@
-body {
-  font-family: 'Segoe UI', sans-serif;
+html, body {
   margin: 0;
   padding: 0;
-  background: #f7f7f7;
-  color: #333;
+  scroll-behavior: smooth;
+  font-family: 'Segoe UI', sans-serif;
+  overflow-x: hidden;
 }
 
-header, footer {
-  background: #202124;
-  color: #fff;
-  padding: 20px;
+.section {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
   text-align: center;
+  color: white;
+  padding: 2rem;
+  transition: background 0.6s ease;
 }
 
-main {
-  padding: 40px;
-  max-width: 800px;
-  margin: auto;
+#intro { background: linear-gradient(to right, #000000, #434343); }
+#objective { background: linear-gradient(to right, #2c3e50, #3498db); }
+#education { background: linear-gradient(to right, #1d976c, #93f9b9); }
+#skills { background: linear-gradient(to right, #b24592, #f15f79); }
+#projects { background: linear-gradient(to right, #4568dc, #b06ab3); }
+#contact { background: linear-gradient(to right, #0f2027, #203a43, #2c5364); }
+
+h1, h2 {
+  margin-bottom: 1rem;
 }
 
-section {
-  margin-bottom: 40px;
+ul, p {
+  max-width: 600px;
+}
+.hidden {
   opacity: 0;
-  transform: translateY(20px);
-  transition: all 0.6s ease;
+  transform: translateY(30px);
+  transition: opacity 0.8s ease, transform 0.8s ease;
 }
 
-section.visible {
+.show {
   opacity: 1;
   transform: translateY(0);
 }
+nav {
+  position: fixed;
+  top: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 1000;
+  display: flex;
+  gap: 20px;
+  background: rgba(0, 0, 0, 0.6);
+  padding: 10px 20px;
+  border-radius: 8px;
+}
+
+nav a {
+  color: #ccc;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+nav a.active {
+  color: #ffffff;
+  border-bottom: 2px solid white;
+}
+#scroll-indicator {
+  position: absolute;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 1.5rem;
+  color: #fff;
+  animation: bounce 2s infinite;
+  transition: opacity 0.5s ease;
+}
+
+@keyframes bounce {
+  0%, 100% {
+    transform: translate(-50%, 0);
+  }
+  50% {
+    transform: translate(-50%, -10px);
+  }
+}
+

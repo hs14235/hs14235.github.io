@@ -23,7 +23,10 @@ html, body {
 #education { background: linear-gradient(to right, #1d976c, #93f9b9); }
 #skills { background: linear-gradient(to right, #b24592, #f15f79); }
 #projects { background: linear-gradient(to right, #4568dc, #b06ab3); }
+#experience  { background: linear-gradient(to right, #0f2027, #203a43, #2c5364); }
+#softskills { background: linear-gradient(to right, #4568dc, #b06ab3); }
 #contact { background: linear-gradient(to right, #0f2027, #203a43, #2c5364); }
+
 
 h1, h2 {
   margin-bottom: 1rem;

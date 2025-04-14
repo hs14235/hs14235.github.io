@@ -8,7 +8,7 @@ document.querySelectorAll('.section').forEach(section => {
           entry.target.classList.add('show');
           observer.unobserve(entry.target); // animate only once
         }
-      });
+      });xz
     }, { threshold: 0.3 });
   
     observer.observe(section);

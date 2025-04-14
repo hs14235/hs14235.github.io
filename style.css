@@ -1,10 +1,13 @@
 html, body {
-  margin: 0;
-  padding: 0;
-  scroll-behavior: smooth;
-  font-family: 'Segoe UI', sans-serif;
-  overflow-x: hidden;
+  scroll-snap-type: y mandatory;
+  height: 100%;
+  overflow-y: scroll;
 }
+
+.section {
+  scroll-snap-align: start;
+}
+
 
 .section {
   height: 100vh;
@@ -21,7 +24,39 @@ html, body {
 #intro { background: linear-gradient(to right, #000000, #434343); }
 #objective { background: linear-gradient(to right, #2c3e50, #3498db); }
 #education { background: linear-gradient(to right, #1d976c, #93f9b9); }
-#skills { background: linear-gradient(to right, #b24592, #f15f79); }
+#skills {
+  background: linear-gradient(to right, #b24592, #f15f79);
+  position: relative;
+  overflow: hidden;
+}
+
+.bubble-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.bubble {
+  position: absolute;
+  background-color: rgba(255, 255, 255, 0.15);
+  color: white;
+  padding: 10px 20px;
+  border-radius: 50px;
+  font-weight: bold;
+  font-size: 1rem;
+  box-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
+  backdrop-filter: blur(5px);
+  animation: float 8s ease-in-out infinite;
+}
+
+@keyframes float {
+  0%   { transform: translateY(0px); }
+  50%  { transform: translateY(-30px); }
+  100% { transform: translateY(0px); }
+}
+
 #projects { background: linear-gradient(to right, #4568dc, #b06ab3); }
 #experience  { background: linear-gradient(to right, #0f2027, #203a43, #2c5364); }
 #softskills { background: linear-gradient(to right, #4568dc, #b06ab3); }

@@ -1,4 +1,3 @@
-// 🔥 Fade-in + Slide animation per section using IntersectionObserver
 document.querySelectorAll('.section').forEach(section => {
     section.classList.add('hidden'); // hide initially
   
@@ -6,7 +5,7 @@ document.querySelectorAll('.section').forEach(section => {
       entries.forEach(entry => {
         if (entry.isIntersecting) {
           entry.target.classList.add('show');
-          observer.unobserve(entry.target); // animate only once
+          observer.unobserve(entry.target); 
         }
       });xz
     }, { threshold: 0.3 });
@@ -14,7 +13,6 @@ document.querySelectorAll('.section').forEach(section => {
     observer.observe(section);
   });
   
-  // 🔥 Dynamic navbar highlighting (based on scroll)
   const navLinks = document.querySelectorAll('nav a');
   
   function highlightCurrentSection() {
@@ -38,7 +36,6 @@ document.querySelectorAll('.section').forEach(section => {
   window.addEventListener('scroll', highlightCurrentSection);
   window.addEventListener('load', highlightCurrentSection);
   
-  // 🔥 Scroll-down indicator hide on scroll
   const scrollIndicator = document.getElementById('scroll-indicator');
   
   window.addEventListener('scroll', () => {

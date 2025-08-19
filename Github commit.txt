@@ -1,0 +1,6 @@
+how to push changes to git:
+git status
+git add .
+git commit -m "Describe change" 
+git pull origin main --rebase 
+git push origin main 

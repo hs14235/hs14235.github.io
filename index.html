@@ -1,87 +1,435 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Hamza Salahuddin | Portfolio</title>
-  <link rel="stylesheet" href="style.css" />
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>Hamza Salahuddin — Portfolio</title>
+  <meta name="description" content="Computer Science student and ACM Vice President with experience in full-stack development, relational databases, and technical leadership.">
+  <link rel="canonical" href="https://hs14235.github.io/">
+  <meta name="robots" content="index,follow">
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Hamza Salahuddin — Portfolio">
+  <meta property="og:description" content="ACM Vice President • Full-stack development • Databases • Software engineering">
+  <meta property="og:url" content="https://hs14235.github.io/">
+  <meta property="og:image" content="https://hs14235.github.io/images/og-cover.png">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Hamza Salahuddin — Portfolio">
+  <meta name="twitter:description" content="ACM Vice President • Full-stack development • Databases • Software engineering">
+  <meta name="twitter:image" content="https://hs14235.github.io/images/og-cover.png">
+
+  <!-- Styles (keep one Bootstrap + theme CSS used by your template) -->
+  <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
+  <link rel="stylesheet" href="css/ionicons.min.css">
+  <link rel="stylesheet" href="css/owl.carousel.css">
+  <link rel="stylesheet" href="css/magnific-popup.css">
+  <link rel="stylesheet" href="css/animate.css">
+  <link rel="stylesheet" href="css/font-awesome.min.css">
+  <link rel="stylesheet" href="css/tooplate-style.css">
+
+  <!-- JSON-LD: Person -->
+  <script type="application/ld+json">
+  {
+    "@context":"https://schema.org",
+    "@type":"Person",
+    "name":"Hamza Salahuddin",
+    "url":"https://hs14235.github.io/",
+    "email":"mailto:rally2hamza@gmail.com",
+    "sameAs":[
+      "https://github.com/hs14235",
+      "https://www.linkedin.com/in/hamza-salahuddin-551753219/"
+    ],
+    "affiliation":{"@type":"Organization","name":"ACM, Georgia Southern University"},
+    "jobTitle":"Vice President (Student Organization)"
+  }
+  </script>
+
+  <!-- JSON-LD: Trainline project -->
+  <script type="application/ld+json">
+  {
+    "@context":"https://schema.org",
+    "@type":"SoftwareSourceCode",
+    "name":"Trainline",
+    "url":"https://github.com/hs14235/Trainline",
+    "codeRepository":"https://github.com/hs14235/Trainline",
+    "programmingLanguage":["Python","JavaScript","SQL"],
+    "applicationCategory":"WebApplication",
+    "creator":{"@type":"Person","name":"Hamza Salahuddin"}
+  }
+  </script>
 </head>
 
 <body>
-  <nav>
-    <a href="#intro">Home</a>
-    <a href="#objective">Objective</a>
-    <a href="#education">Education</a>
-    <a href="#skills">Skills</a>
-    <a href="#projects">Projects</a>
-    <a href="#contact">Contact</a>
-  </nav>
 
-  <section id="intro" class="section">
-    <h1>Hamza Salahuddin</h1>
-    <p>Optimized-focus, robust & goal-oriented programmer</p>
-  </section>
+<!-- PRE LOADER -->
+<div class="preloader">
+  <div class="spinner"><span class="spinner-rotate"></span></div>
+</div>
 
-  <section id="objective" class="section">
-    <h2>Objective</h2>
-    <p>Relentlessly iterative developer with a passion for building resilient, efficient systems. Currently seeking internship opportunities to apply my experience in CRUD development, REST APIs, and multi-language software design in environments that encourage creativity and continuous learning</p>
-  </section>
-
-  <section id="education" class="section">
-    <h2>Education</h2>
-    <ul>
-      <p><strong>Georgia Southern University — B.Sc. CS (2022 – Present)</strong></p>
-      <p><strong>Georgia Military College — A.Sc. CS (2020 – 2022)</strong></p>
-      <p><strong>Birkerød Gymnasium — IGCSE (2017 – 2019)</strong></p>
-    </ul>
-  </section>
-
-  <section id="skills" class="section">
-    <h2>Technical Skills</h2>
-    <div class="bubble-container">
-      <span class="bubble" style="top:10%; left:15%;">SQL</span>
-      <span class="bubble" style="top:20%; left:60%;">PHP</span>
-      <span class="bubble" style="top:30%; left:30%;">JavaScript</span>
-      <span class="bubble" style="top:40%; left:70%;">Python</span>
-      <span class="bubble" style="top:50%; left:10%;">HTML</span>
-      <span class="bubble" style="top:60%; left:50%;">CSS</span>
-      <span class="bubble" style="top:70%; left:20%;">Java</span>
-      <span class="bubble" style="top:75%; left:65%;">PostgreSQL</span>
-      <span class="bubble" style="top:15%; left:80%;">C#</span>
-      <span class="bubble" style="top:85%; left:40%;">React Native</span>
-      <span class="bubble" style="top:25%; left:85%;">Django</span>
-      <span class="bubble" style="top:35%; left:5%;">Assembly</span>
+<!-- HOME / HERO -->
+<section id="home" class="parallax-section">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-offset-5 col-md-7 col-sm-12">
+        <div class="home-thumb">
+          <h1 class="wow fadeInUp" data-wow-delay="0.4s">Hi, I’m Hamza</h1>
+          <p class="wow fadeInUp white-color" data-wow-delay="0.6s">
+            CS student & ACM Vice President 
+          </p>
+          <a href="#about" class="wow fadeInUp smoothScroll btn btn-default section-btn" data-wow-delay="1s">Discover more</a>
+        </div>
+      </div>
     </div>
-  </section>
-  
-    
-  </section>
+  </div>
+</section>
 
-  <section id="projects" class="section">
-    <h2>Projects</h2>
-    <p><strong>Flight Booking App</strong> — Spring, CRUD, REST, & PostgreSQL</p>
-    <p><strong>DFA Checker</strong> — Finished in Java & Python</p>
-  </section>
+<!-- OVERVIEW / PROFILE -->
+<section id="service" class="parallax-section">
+  <div class="wow fadeInUp container" data-wow-delay="0.2s">
+    <div class="row">
+      <div class='row'>
+        <!-- Left: quick facts -->
+        <div class='col-md-4'>
+          <ul class='info-list'>
+            <li><strong>Name:</strong> <span>Hamza Salahuddin</span></li>
+            <li><strong>School:</strong> <span>Georgia Southern University</span></li>
+            <li><strong>Role:</strong> <span>ACM Vice President (2025–2026)</span></li>
+            <li><strong>Location:</strong> <span>Georgia, USA</span></li>
+            <li>
+              <ul class="social-icon">
+                <li><a target="_blank" href="https://www.linkedin.com/in/hamza-salahuddin-551753219/" class="fa fa-linkedin" aria-label="LinkedIn"></a></li>
+                <li><a target="_blank" href="https://github.com/hs14235" class="fa fa-github" aria-label="GitHub"></a></li>
+                <li><a target="_blank" href="mailto:rally2hamza@gmail.com" class="fa fa-envelope" aria-label="Email"></a></li>
+              </ul>
+            </li>
+          </ul>
+        </div>
 
-  <section id="experience" class="section">
-    <h2>Experiences</h2>
-    <p>Student Assistant - Georgia State University (2022-2023)</p>
-    <p>Intern - Gallant Sdn Bhd (2019-2020)</p>
-  </section>
+        <!-- Right: summary + resume buttons -->
+        <div class='col-md-8'>
+          <div class='about-text'>
+            <p>
+              Curious & scrupulous wannabe student with experience in full-stack development, relational databases, and technical leadership. I enjoy building practical software—front to back—and working with teams to ship clean, reliable features.
+            </p>
+            <p>
+              Tech stack includes Python, Java, JavaScript, React, Django, .NET, SQL (PostgreSQL/MySQL), and Spring. I’m currently focused on Trainline, a full-stack booking app that demonstrates DBMS design, authentication, transactions, and user workflows.
+            </p>
+          </div>
 
-  <section id = "softskills" class="section">
-    <h2>Soft Skills</h2>
-    <p>Languages (fluent): English, Malay, & Urdu</p>
-    <p>Languages (classroom study): Danish</p>
-  </section>
+          <div class='about-btns'>
+            <a target="_blank" href='/images/Resume.pdf' class='btn-custom btn-color' download='Hamza_Salahuddin_Resume.pdf'>
+              Download Resume (PDF)
+            </a>
+            <small style="display:block;margin-top:.5rem">
+              <a target="_blank" href='/Hamza_Salahuddin_Resume.docx'>ATS Version (.docx)</a>
+            </small>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
 
-  <section id="contact" class="section">
-    <h2>Contact</h2>
-    <p>github.com/hs14235 • 📞 478-305-1808 • 📧 hs14235@georgiasouthern.edu</p>
-  </section>
+<!-- EDUCATION -->
+<section id="about" class="parallax-section">
+  <div class="container">
+    <div class="row">
+      <div class="wow fadeInUp section-title" data-wow-delay="0.2s">
+        <h2>My Education</h2>
+      </div>
 
-  <script src="script.js"></script>
-  <a href="Hamza_Resume.pdf" class="resume-btn" download>📄 Download Resume</a>
+      <ul class='timeline'>
+        <li>
+          <div class='wow fadeInUp timeline-content' data-wow-delay="0.1s">
+            <h4>Georgia Southern University</h4>
+            <em>
+              <span>Bachelor of Science, Computer Science</span>
+              <span> | </span>
+              <span>2024–Present (Expected 2026)</span>
+            </em>
+            <p><b>Relevant coursework:</b> Advanced Software Engineering, Computer Security, Database Systems, Algorithm Design & Analysis, Linear Algebra</p>
+          </div>
+        </li>
 
+        <li>
+          <div class='wow fadeInUp timeline-content' data-wow-delay="0.1s">
+            <h4>Georgia Military College</h4>
+            <em><span>2020–2022</span></em>
+            <p>Associate of Science, Computer Science • Associate’s Degree, General Studies</p>
+          </div>
+        </li>
+
+        <li>
+          <div class='wow fadeInUp timeline-content' data-wow-delay="0.1s">
+            <h4>Birkerød Gymnasium</h4>
+            <em><span>IGCSE Diploma</span> <span> | </span> <span>2017–2019</span></em>
+          </div>
+        </li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- EXPERIENCE -->
+<section id="work" class="parallax-section">
+  <div class="container">
+    <div class="row">
+      <div class="wow fadeInUp section-title" data-wow-delay="0.2s">
+        <h2>My Experience</h2>
+      </div>
+
+      <ul class='timeline'>
+        <li>
+          <div class='wow fadeInUp timeline-content' data-wow-delay="0.1s">
+            <h4>Association for Computing Machinery (ACM)</h4>
+            <em>
+              <span>Vice President</span>
+              <span> | </span>
+              <span>Georgia Southern University</span>
+              <span> | </span>
+              <span>2025–2026</span>
+            </em>
+            <ul style="list-style-type:disc; margin-left:1rem">
+              <li>Elected VP of ACM, the primary computing and engineering club on campus</li>
+              <li>Organize hackathons, networking events, and project development initiatives for 100+ members</li>
+              <li>Collaborate with faculty advisor Dr. Ryan Florin and executive board to expand opportunities</li>
+              <li>Support departmental outreach and mentor students in technical project development</li>
+            </ul>
+          </div>
+        </li>
+
+        <li>
+          <div class='wow fadeInUp timeline-content' data-wow-delay="0.1s">
+            <h4>Georgia State University</h4>
+            <em>
+              <span>Student Assistant</span>
+              <span> | </span>
+              <span>Atlanta, GA</span>
+              <span> | </span>
+              <span>2022–2023</span>
+            </em>
+            <ul style="list-style-type:disc; margin-left:1rem">
+              <li>Supervised and trained a 10+ member dining services team, improving efficiency and safety compliance</li>
+              <li>Streamlined inventory management, reducing shortages by 20% and minimizing waste</li>
+              <li>Oversaw high-volume operations, ensuring customer satisfaction and service quality</li>
+            </ul>
+          </div>
+        </li>
+
+        <li>
+          <div class='wow fadeInUp timeline-content' data-wow-delay="0.1s">
+            <h4>Gallant SDN BHD</h4>
+            <em>
+              <span>Intern</span>
+              <span> | </span>
+              <span>Bandar Seri Begawan, Brunei Darussalam</span>
+              <span> | </span>
+              <span>2019–2020</span>
+            </em>
+            <ul style="list-style-type:disc; margin-left:1rem">
+              <li>Conducted research on industry trends and competitor performance to support strategic decisions</li>
+              <li>Gained exposure to corporate governance processes and financial management practices</li>
+              <li>Assisted staff during meetings with government bodies, enhancing knowledge of operations</li>
+            </ul>
+          </div>
+        </li>
+      </ul>
+
+    </div>
+  </div>
+</section>
+
+<!-- PROJECTS -->
+<section id="projects" class="parallax-section">
+  <div class="container">
+    <div class="row">
+      <div class="wow fadeInUp section-title" data-wow-delay="0.2s">
+        <h2>Projects</h2>
+        <p>Selected work — details and code on GitHub</p>
+      </div>
+
+      <div class="col-md-4 col-sm-6 wow fadeInUp" data-wow-delay="0.2s">
+        <a target="_blank" href="https://github.com/hs14235/Trainline">
+          <div class="service-thumb">
+            <i class="fa fa-train" style="font-size:45px; padding-left:15px;"></i>
+            <h4 class="white-color">Trainline</h4>
+            <p>Full-stack booking app (Django REST API, React, MySQL). Auth, seat selection, ticketing, transactions, notifications, chat. Normalized DB schema (User, Ticket, Passenger, Payment, Notifications).</p>
+            <div class="skill-container">
+              <button class="skill"><h6>Django</h6></button>
+              <button class="skill"><h6>React</h6></button>
+              <button class="skill"><h6>MySQL</h6></button>
+            </div>
+          </div>
+        </a>
+      </div>
+
+      <div class="col-md-4 col-sm-6 wow fadeInUp" data-wow-delay="0.3s">
+        <a target="_blank" href="https://github.com/hs14235/GSU-CS-Intro-to-Software-Engineering-SE-2024Fall-BinaryBosses">
+          <div class="service-thumb">
+            <i class="fa fa-plane" style="font-size:45px; padding-left:15px;"></i>
+            <h4 class="white-color">Flight Booking Application</h4>
+            <p>CRUD booking platform (PostgreSQL, REST APIs, HTML/CSS). DAOAuthenticator for secure login; transaction-backed booking.</p>
+            <div class="skill-container">
+              <button class="skill"><h6>PostgreSQL</h6></button>
+              <button class="skill"><h6>REST</h6></button>
+              <button class="skill"><h6>HTML/CSS</h6></button>
+            </div>
+          </div>
+        </a>
+      </div>
+
+      <div class="col-md-4 col-sm-6 wow fadeInUp" data-wow-delay="0.4s">
+        <a target="_blank" href="https://github.com/hs14235/hs14235.github.io">
+          <div class="service-thumb">
+            <i class="fa fa-sitemap" style="font-size:45px; padding-left:15px;"></i>
+            <h4 class="white-color">Personal Website</h4>
+            <p>Portfolio of academic &amp; career endeavors.</p>
+            <div class="skill-container">
+              <button class="skill"><h6>HTML</h6></button>
+              <button class="skill"><h6>Python</h6></button>
+            </div>
+          </div>
+        </a>
+      </div>
+
+      <div class="col-md-4 col-sm-6 wow fadeInUp" data-wow-delay="0.5s">
+        <a target="_blank" href="https://github.com/hs14235/DFA">
+          <div class="service-thumb">
+            <i class="fa fa-sitemap" style="font-size:45px; padding-left:15px;"></i>
+            <h4 class="white-color">DFA Checker</h4>
+            <p>Deterministic finite automata checker in Java and Python. Validates input strings against defined rules and states.</p>
+            <div class="skill-container">
+              <button class="skill"><h6>Java</h6></button>
+              <button class="skill"><h6>Python</h6></button>
+            </div>
+          </div>
+        </a>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- LEADERSHIP  -->
+<section id="leadership" class="parallax-section">
+  <div class="container">
+    <div class="row">
+      <div class="wow fadeInUp section-title" data-wow-delay="0.2s">
+        <h2>Leadership & Activities</h2>
+      </div>
+      <div class="col-md-8 col-sm-12">
+        <div class="about-thumb">
+          <div class="wow fadeInUp" data-wow-delay="0.2s">
+            <h3>Association for Computing Machinery (ACM), Georgia Southern University</h3>
+            <p><b>Vice President (2025–2026)</b> — Organize hackathons, workshops, and networking events; collaborate with faculty advisor and E-board to expand member opportunities; mentor students on technical projects.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact" class="parallax-section">
+  <div class="container">
+    <div class="row">
+
+      <div class="col-md-12 col-sm-12">
+        <div class="wow fadeInUp section-title" data-wow-delay="0.2s">
+          <h2>Get in touch</h2>
+          <p>I reply quickly — Feel free to contact about anything</p>
+        </div>
+      </div>
+
+      <div class="col-md-8 col-sm-10 col-md-offset-2">
+        <div class="contact-card wow fadeInUp" data-wow-delay="0.3s">
+          <!-- https://formspree.io/forms/mgvzbgqr/submissions  -->
+          <form id="contact-form" action="https://formspree.io/f/mgvzbgqr" method="POST" novalidate>
+            <!-- anti-spam honeypot -->
+            <input type="text" name="_gotcha" tabindex="-1" autocomplete="off" class="hp-field">
+
+            <!-- subject shown in email -->
+            <input type="hidden" name="_subject" value="Portfolio contact from hs14235.github.io">
+            <!-- where to redirect if JS disabled -->
+            <input type="hidden" name="_next" value="https://hs14235.github.io/#contact">
+
+            <div class="row">
+              <div class="col-sm-6">
+                <div class="form-floating mb-3">
+                  <input type="text" id="name_field" name="name" class="form-control fancy-input" placeholder="Your name" required>
+                  <label for="name_field">Name</label>
+                </div>
+              </div>
+              <div class="col-sm-6">
+                <div class="form-floating mb-3">
+                  <input type="email" id="email_field" name="email" class="form-control fancy-input" placeholder="you@example.com" required>
+                  <label for="email_field">Email</label>
+                </div>
+              </div>
+            </div>
+
+            <div class="form-floating mb-3">
+              <input type="text" id="subject_field" name="subject" class="form-control fancy-input" placeholder="Subject" required>
+              <label for="subject_field">Subject</label>
+            </div>
+
+            <div class="form-floating mb-4">
+              <textarea id="message_area" name="message" class="form-control fancy-input" style="height: 140px" placeholder="Your message..." required></textarea>
+              <label for="message_area">Message</label>
+            </div>
+
+            <div class="text-center">
+              <button id="submitBtn" type="submit" class="btn-custom btn-color btn-pill">
+                <span class="btn-spinner" aria-hidden="true"></span>
+                Send Message
+              </button>
+            </div>
+
+            <div class="form-feedback" aria-live="polite" role="status" id="formFeedback"></div>
+          </form>
+
+        
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+
+<!-- FOOTER -->
+<footer>
+  <div class="container bottom">
+    <div class="row">
+      <div class="wow fadeInUp col-md-12 col-sm-12" data-wow-delay="0.4s">
+        <p>Copyright &copy; 2025 Hamza Salahuddin | Design: Tooplate</p>
+        <div class="wow fadeInUp" data-wow-delay="0.4s">
+          <ul class="social-icon" style="text-align: center;">
+            <li><a target="_blank" href="https://www.linkedin.com/in/hamza-salahuddin-551753219/" class="fa fa-linkedin" aria-label="LinkedIn"></a></li>
+            <li><a target="_blank" href="https://github.com/hs14235" class="fa fa-github" aria-label="GitHub"></a></li>
+            <li><a target="_blank" href="mailto:rally2hamza@gmail.com" class="fa fa-envelope" aria-label="Email"></a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<!-- SCRIPTS: jQuery first, then Bootstrap, then plugins, then initializers -->
+<script src="js/jquery.js"></script>
+<script src="js/bootstrap.min.js"></script>
+<script src="js/jquery.parallax.js"></script>
+<script src="js/smoothscroll.js"></script>
+<script src="js/jquery.magnific-popup.min.js"></script>
+<script src="js/magnific-popup-options.js"></script>
+<script src="js/wow.min.js"></script>
+<script src="js/custom.js"></script>
 </body>
 </html>

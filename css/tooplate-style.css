@@ -966,3 +966,34 @@ footer p {
     font-size: 16px;
   }
 }
+
+@media (max-width: 768px){
+  #service, #about, #work, #contact, footer{
+    padding-top: 50px;
+    padding-bottom: 50px;
+  }
+}
+
+@media (max-width: 768px){
+  .service-thumb{
+    padding: 26px 18px;
+  }
+
+  p, li{
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+  }
+}
+
+@media (max-width: 768px){
+  .timeline:before{ left: 10px; }
+  .timeline > li{ padding-left: 26px; }
+  .timeline > li > .timeline-content:before{ left: -16px; width: 16px; }
+  .timeline > li > .timeline-content:after{ left: -22px; }
+}
+@media (max-width: 767px){
+  #projects .row:not(.section-title-row) > [class*="col-"]{
+    flex: 0 0 100%;
+    max-width: 100%;
+  }
+}

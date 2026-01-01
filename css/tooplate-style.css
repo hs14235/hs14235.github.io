@@ -798,8 +798,146 @@ footer p {
     height: 75vh;                    /* shorter hero on mobile */
   }
 }
-/* equal-height project cards */
-#projects .col-md-4, 
-#projects .col-sm-6 { display: flex; }
-#projects .service-thumb { display: flex; flex-direction: column; width: 100%; }
-#projects .service-thumb .skill-container { margin-top: auto; }
+/* ==============================
+   PROJECTS: clean, tight grid
+   (no HTML change required)
+   ============================== */
+
+/* Turn the Projects row into a flex grid */
+#projects .container>.row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: stretch;
+  /* all cards same row height */
+}
+
+/* Override Bootstrap 3 floats for this section only */
+#projects .container>.row>[class*="col-"] {
+  float: none !important;
+  display: flex;
+  /* lets the card fill column height */
+  margin-bottom: 22px;
+  /* consistent vertical spacing */
+}
+
+/* 3 columns on md (>=992px) */
+@media (min-width: 992px) {
+  #projects .container>.row>[class*="col-"] {
+    flex: 0 0 33.3333%;
+    max-width: 33.3333%;
+  }
+}
+
+/* 2 columns on sm (>=768px and <992px) */
+@media (min-width: 768px) and (max-width: 991px) {
+  #projects .container>.row>[class*="col-"] {
+    flex: 0 0 50%;
+    max-width: 50%;
+  }
+}
+
+/* 1 column on xs (<768px) */
+@media (max-width: 767px) {
+  #projects .container>.row>[class*="col-"] {
+    flex: 0 0 100%;
+    max-width: 100%;
+  }
+}
+
+/* Make the anchor + card fill the column */
+#projects .container>.row>[class*="col-"]>a {
+  display: flex;
+  width: 100%;
+}
+
+/* Card fills space, content stacks nicely */
+#projects .service-thumb {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Keep skill pills pinned to bottom (nice + consistent) */
+#projects .service-thumb .skill-container {
+  margin-top: auto;
+}
+
+/* Optional: tighten horizontal gutters a bit (safe) */
+#projects .container>.row {
+  margin-left: -11px;
+  margin-right: -11px;
+}
+
+#projects .container>.row>[class*="col-"] {
+  padding-left: 11px;
+  padding-right: 11px;
+}
+
+/* ==============================
+   PROJECTS: header top, cards centered
+   ============================== */
+
+/* Reset ONLY the row that contains cards */
+#projects .row:not(.section-title-row) {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  /* centers the cards */
+  align-items: stretch;
+}
+
+/* Keep section title full-width */
+#projects .section-title {
+  width: 100%;
+  text-align: center;
+}
+
+/* Ensure cards behave like grid items */
+#projects .row:not(.section-title-row)>[class*="col-"] {
+  float: none !important;
+  display: flex;
+  margin-bottom: 22px;
+}
+
+/* 3 columns desktop */
+@media (min-width: 992px) {
+  #projects .row:not(.section-title-row)>[class*="col-"] {
+    flex: 0 0 33.3333%;
+    max-width: 33.3333%;
+  }
+}
+
+/* 2 columns tablet */
+@media (min-width: 768px) and (max-width: 991px) {
+  #projects .row:not(.section-title-row)>[class*="col-"] {
+    flex: 0 0 50%;
+    max-width: 50%;
+  }
+}
+
+/* 1 column mobile */
+@media (max-width: 767px) {
+  #projects .row:not(.section-title-row)>[class*="col-"] {
+    flex: 0 0 100%;
+    max-width: 100%;
+  }
+}
+
+/* Card fills column */
+#projects .row:not(.section-title-row)>[class*="col-"]>a {
+  display: flex;
+  width: 100%;
+}
+
+#projects .service-thumb {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Skills stick to bottom */
+#projects .service-thumb .skill-container {
+  margin-top: auto;
+}

@@ -941,3 +941,28 @@ footer p {
 #projects .service-thumb .skill-container {
   margin-top: auto;
 }
+
+
+
+/* ===== Mobile fixes ===== */
+@media (max-width: 768px){
+  #home{
+    height: 100vh !important;           /* stop giant scrolling hero */
+    background-attachment: scroll;
+    background-position: center 60% !important;
+    align-items: center !important;     /* center hero content */
+  }
+
+  .home-thumb{
+    padding: 18px 14px;
+  }
+
+  .home-thumb h1{
+    font-size: 28px;
+    line-height: 1.2;
+  }
+
+  .home-thumb p{
+    font-size: 16px;
+  }
+}

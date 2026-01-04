@@ -941,3 +941,54 @@ footer p {
 #projects .service-thumb .skill-container {
   margin-top: auto;
 }
+
+/* ---- Mobile improvements ---- */
+
+/* 1) Respect accessibility: if user disables motion, disable animations */
+@media (prefers-reduced-motion: reduce) {
+
+  .animated,
+  .wow {
+    animation: none !important;
+    transition: none !important;
+  }
+}
+
+/* 2) Make hover effects work on touch (tap) */
+.service-thumb:active,
+.service-thumb:focus-visible {
+  background: #ffffff;
+  top: -5px;
+}
+
+/* 3) Center projects row and make cards feel better on small screens */
+#projects .row {
+  justify-content: center;
+  /* bootstrap row is flex */
+}
+
+@media (max-width: 576px) {
+
+  /* reduce excessive padding so cards fit and feel “fluid” */
+  .service-thumb {
+    padding: 24px 16px;
+  }
+
+  /* reduce section spacing so it doesn’t feel cramped */
+  #projects {
+    padding-top: 60px;
+    padding-bottom: 60px;
+  }
+
+  /* prevent weird horizontal scroll from any wide elements */
+  html,
+  body {
+    overflow-x: hidden;
+  }
+
+  /* images should never overflow */
+  img {
+    max-width: 100%;
+    height: auto;
+  }
+}

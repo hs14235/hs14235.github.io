@@ -942,53 +942,69 @@ footer p {
   margin-top: auto;
 }
 
-/* ---- Mobile improvements ---- */
 
-/* 1) Respect accessibility: if user disables motion, disable animations */
-@media (prefers-reduced-motion: reduce) {
 
-  .animated,
-  .wow {
-    animation: none !important;
-    transition: none !important;
+/* ===== Mobile fixes ===== */
+@media (max-width: 768px){
+  #home{
+    height: 100vh !important;           /* stop giant scrolling hero */
+    background-attachment: scroll;
+    background-position: center 60% !important;
+    align-items: center !important;     /* center hero content */
+  }
+
+  .home-thumb{
+    padding: 18px 14px;
+  }
+
+  .home-thumb h1{
+    font-size: 28px;
+    line-height: 1.2;
+  }
+
+  .home-thumb p{
+    font-size: 16px;
   }
 }
 
-/* 2) Make hover effects work on touch (tap) */
-.service-thumb:active,
-.service-thumb:focus-visible {
-  background: #ffffff;
-  top: -5px;
+@media (max-width: 768px){
+  #service, #about, #work, #contact, footer{
+    padding-top: 50px;
+    padding-bottom: 50px;
+  }
 }
 
-/* 3) Center projects row and make cards feel better on small screens */
-#projects .row {
-  justify-content: center;
-  /* bootstrap row is flex */
+@media (max-width: 768px){
+  .service-thumb{
+    padding: 26px 18px;
+  }
+
+  p, li{
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+  }
 }
 
-@media (max-width: 576px) {
-
-  /* reduce excessive padding so cards fit and feel “fluid” */
-  .service-thumb {
-    padding: 24px 16px;
-  }
-
-  /* reduce section spacing so it doesn’t feel cramped */
-  #projects {
-    padding-top: 60px;
-    padding-bottom: 60px;
-  }
-
-  /* prevent weird horizontal scroll from any wide elements */
-  html,
-  body {
-    overflow-x: hidden;
-  }
-
-  /* images should never overflow */
-  img {
+@media (max-width: 768px){
+  .timeline:before{ left: 10px; }
+  .timeline > li{ padding-left: 26px; }
+  .timeline > li > .timeline-content:before{ left: -16px; width: 16px; }
+  .timeline > li > .timeline-content:after{ left: -22px; }
+}
+@media (max-width: 767px){
+  #projects .row:not(.section-title-row) > [class*="col-"]{
+    flex: 0 0 100%;
     max-width: 100%;
-    height: auto;
+  }
+}
+/* ===== Force animate.css to run on mobile ===== */
+@media (max-width: 992px){
+  .animated{
+    -webkit-animation-duration: 1s !important;
+            animation-duration: 1s !important;
+    -webkit-animation-fill-mode: both !important;
+            animation-fill-mode: both !important;
+    -webkit-animation-play-state: running !important;
+            animation-play-state: running !important;
   }
 }

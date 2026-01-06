@@ -65,10 +65,18 @@
     });
     
     // Handle Formspree redirect by checking URL hash
-    if (window.location.hash === '#contact' && document.referrer.includes('formspree.io')) {
-      formFeedback.className = 'form-feedback success';
-      formFeedback.textContent = '✓ Message sent successfully! I will get back to you soon.';
-      form.reset();
+    // More secure check - ensure referrer is exactly from formspree.io domain
+    if (window.location.hash === '#contact' && document.referrer) {
+      try {
+        var referrerUrl = new URL(document.referrer);
+        if (referrerUrl.hostname === 'formspree.io' || referrerUrl.hostname.endsWith('.formspree.io')) {
+          formFeedback.className = 'form-feedback success';
+          formFeedback.textContent = '✓ Message sent successfully! I will get back to you soon.';
+          form.reset();
+        }
+      } catch (e) {
+        // Invalid URL, ignore
+      }
     }
   }
 

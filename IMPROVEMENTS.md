@@ -195,7 +195,7 @@ This document details the comprehensive improvements made to the portfolio websi
 
 - [Web.dev Performance Guidelines](https://web.dev/performance/)
 - [MDN Web Accessibility](https://developer.mozilla.org/en-US/docs/Web/Accessibility)
-- [W3C ARIA Best Practices](https://www.w3.org/WAI/ARIA/apg/)
+- [W3C ARIA Authoring Practices Guide](https://www.w3.org/WAI/ARIA/apg/patterns/)
 - [Google Lighthouse](https://developers.google.com/web/tools/lighthouse)
 
 ---

@@ -65,11 +65,12 @@
     });
     
     // Handle Formspree redirect by checking URL hash
-    // More secure check - ensure referrer is exactly from formspree.io domain
+    // Secure check - ensure referrer is exactly formspree.io (no subdomains)
     if (window.location.hash === '#contact' && document.referrer) {
       try {
         var referrerUrl = new URL(document.referrer);
-        if (referrerUrl.hostname === 'formspree.io' || referrerUrl.hostname.endsWith('.formspree.io')) {
+        // Only accept formspree.io - no subdomains or similar domains
+        if (referrerUrl.hostname === 'formspree.io') {
           formFeedback.className = 'form-feedback success';
           formFeedback.textContent = '✓ Message sent successfully! I will get back to you soon.';
           form.reset();

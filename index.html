@@ -37,11 +37,58 @@
   <!-- Styles (keep one Bootstrap + theme CSS used by your template) -->
   <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
   <link rel="stylesheet" href="css/ionicons.min.css">
-  <link rel="stylesheet" href="css/owl.carousel.css">
   <link rel="stylesheet" href="css/magnific-popup.css">
   <link rel="stylesheet" href="css/animate.css">
   <link rel="stylesheet" href="css/font-awesome.min.css">
   <link rel="stylesheet" href="css/tooplate-style.css">
+
+  <!-- Inline critical styles for performance -->
+  <style>
+    /* Honeypot field - hidden from users but readable by bots */
+    .hp-field {
+      position: absolute;
+      left: -9999px;
+      width: 1px;
+      height: 1px;
+      opacity: 0;
+    }
+    
+    /* Preloader optimization */
+    .preloader {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: #ffffff;
+      z-index: 99999;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    
+    /* Form feedback styles */
+    .form-feedback {
+      margin-top: 1rem;
+      padding: 1rem;
+      border-radius: 4px;
+      display: none;
+    }
+    
+    .form-feedback.success {
+      display: block;
+      background-color: #d4edda;
+      color: #155724;
+      border: 1px solid #c3e6cb;
+    }
+    
+    .form-feedback.error {
+      display: block;
+      background-color: #f8d7da;
+      color: #721c24;
+      border: 1px solid #f5c6cb;
+    }
+  </style>
 
   <!-- JSON-LD: Person -->
   <script type="application/ld+json">
@@ -77,13 +124,16 @@
 
 <body>
 
+<!-- Skip to main content for accessibility -->
+<a href="#home" class="skip-link" style="position:absolute;left:-9999px;top:0;z-index:999999;padding:1em;background:#000;color:#fff;text-decoration:none;">Skip to main content</a>
+
 <!-- PRE LOADER -->
-<div class="preloader">
+<div class="preloader" role="status" aria-label="Loading">
   <div class="spinner"><span class="spinner-rotate"></span></div>
 </div>
 
 <!-- HOME / HERO -->
-<section id="home" class="parallax-section">
+<section id="home" class="parallax-section" role="banner">
   <div class="container">
     <div class="row">
       <div class="col-md-offset-5 col-md-7 col-sm-12">
@@ -100,7 +150,7 @@
 </section>
 
 <!-- OVERVIEW / PROFILE -->
-<section id="service" class="parallax-section">
+<section id="service" class="parallax-section" role="region" aria-label="Profile Overview">
   <div class="wow fadeInUp container" data-wow-delay="0.2s">
     <div class="row">
       <div class='row'>
@@ -153,7 +203,7 @@
 </section>
 
 <!-- EDUCATION -->
-<section id="about" class="parallax-section">
+<section id="about" class="parallax-section" role="region" aria-label="Education">
   <div class="container">
     <div class="row">
       <div class="wow fadeInUp section-title" data-wow-delay="0.2s">
@@ -193,7 +243,7 @@
 </section>
 
 <!-- EXPERIENCE -->
-<section id="work" class="parallax-section">
+<section id="work" class="parallax-section" role="region" aria-label="Experience">
   <div class="container">
     <div class="row">
       <div class="wow fadeInUp section-title" data-wow-delay="0.2s">
@@ -262,7 +312,7 @@
 </section>
 
 <!-- PROJECTS -->
-<section id="projects" class="parallax-section">
+<section id="projects" class="parallax-section" role="region" aria-label="Projects">
   <div class="container">
     <div class="row">
       <div class="wow fadeInUp section-title" data-wow-delay="0.2s">
@@ -350,7 +400,7 @@
 
 
 <!-- LEADERSHIP  -->
-<section id="leadership" class="parallax-section">
+<section id="leadership" class="parallax-section" role="region" aria-label="Leadership">
   <div class="container">
     <div class="row">
       <div class="wow fadeInUp section-title" data-wow-delay="0.2s">
@@ -369,7 +419,7 @@
 </section>
 
 <!-- CONTACT -->
-<section id="contact" class="parallax-section">
+<section id="contact" class="parallax-section" role="region" aria-label="Contact Form">
   <div class="container">
     <div class="row">
 
@@ -438,7 +488,7 @@
 
 
 <!-- FOOTER -->
-<footer>
+<footer role="contentinfo">
   <div class="container bottom">
     <div class="row">
       <div class="wow fadeInUp col-md-12 col-sm-12" data-wow-delay="0.4s">

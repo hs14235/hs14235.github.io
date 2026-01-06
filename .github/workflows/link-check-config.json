@@ -1,0 +1,11 @@
+{
+  "ignorePatterns": [
+    {
+      "pattern": "^http://localhost"
+    },
+    {
+      "pattern": "^https://formspree.io"
+    }
+  ],
+  "aliveStatusCodes": [200, 206, 429]
+}

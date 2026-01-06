@@ -42,4 +42,34 @@
     live: true
   }).init();
 
+  // Contact Form Enhancement
+  var form = document.getElementById('contact-form');
+  var submitBtn = document.getElementById('submitBtn');
+  var formFeedback = document.getElementById('formFeedback');
+  
+  if (form) {
+    form.addEventListener('submit', function(e) {
+      // Only enhance, don't prevent default - let Formspree handle it
+      submitBtn.disabled = true;
+      submitBtn.innerHTML = '<span class="btn-spinner" aria-hidden="true"></span> Sending...';
+      
+      // Add timeout to re-enable button in case of issues
+      setTimeout(function() {
+        if (submitBtn.disabled) {
+          submitBtn.disabled = false;
+          submitBtn.innerHTML = '<span class="btn-spinner" aria-hidden="true"></span> Send Message';
+          formFeedback.className = 'form-feedback error';
+          formFeedback.textContent = 'Submission timeout. Please check your connection and try again.';
+        }
+      }, 10000);
+    });
+    
+    // Handle Formspree redirect by checking URL hash
+    if (window.location.hash === '#contact' && document.referrer.includes('formspree.io')) {
+      formFeedback.className = 'form-feedback success';
+      formFeedback.textContent = '✓ Message sent successfully! I will get back to you soon.';
+      form.reset();
+    }
+  }
+
 })(jQuery);

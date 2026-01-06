@@ -65,6 +65,8 @@
     });
     
     // Handle Formspree redirect by checking URL hash
+    // Note: Referrer check is for UX convenience only (showing success message)
+    // Not used for authentication/authorization - Formspree handles actual security
     // Secure check - ensure referrer is exactly formspree.io (no subdomains)
     if (window.location.hash === '#contact' && document.referrer) {
       try {

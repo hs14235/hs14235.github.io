@@ -1,0 +1,30 @@
+# Editor directories and files
+.vscode/*
+!.vscode/settings.json
+.idea
+.DS_Store
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+
+# Temporary files
+*.tmp
+*.log
+*~
+.cache
+
+# Build outputs (if added in future)
+dist/
+build/
+*.min.js.map
+*.min.css.map
+
+# Dependencies (if added in future)
+node_modules/
+bower_components/
+
+# OS files
+Thumbs.db
+.DS_Store

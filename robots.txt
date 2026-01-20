@@ -1,2 +1,5 @@
 User-agent: *
-Disallow: 
+Allow: /
+
+# Sitemap
+Sitemap: https://hs14235.github.io/sitemap.xml

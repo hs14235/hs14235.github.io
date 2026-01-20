@@ -4,6 +4,7 @@
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=Edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#303F9F">
 
   <title>Hamza Salahuddin — Portfolio</title>
   <meta name="description" content="Computer Science student and ACM Vice President with experience in full-stack development, relational databases, and technical leadership.">
@@ -28,14 +29,66 @@
 
   <meta name="author" content="Hamza Salahuddin">
 
+  <!-- Resource hints for performance -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="dns-prefetch" href="https://formspree.io">
+
   <!-- Styles (keep one Bootstrap + theme CSS used by your template) -->
   <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
   <link rel="stylesheet" href="css/ionicons.min.css">
-  <link rel="stylesheet" href="css/owl.carousel.css">
   <link rel="stylesheet" href="css/magnific-popup.css">
   <link rel="stylesheet" href="css/animate.css">
   <link rel="stylesheet" href="css/font-awesome.min.css">
   <link rel="stylesheet" href="css/tooplate-style.css">
+
+  <!-- Inline critical styles for performance -->
+  <style>
+    /* Honeypot field - hidden from users but readable by bots */
+    .hp-field {
+      position: absolute;
+      left: -9999px;
+      width: 1px;
+      height: 1px;
+      opacity: 0;
+    }
+    
+    /* Preloader optimization */
+    .preloader {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: #ffffff;
+      z-index: 99999;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    
+    /* Form feedback styles */
+    .form-feedback {
+      margin-top: 1rem;
+      padding: 1rem;
+      border-radius: 4px;
+      display: none;
+    }
+    
+    .form-feedback.success {
+      display: block;
+      background-color: #d4edda;
+      color: #155724;
+      border: 1px solid #c3e6cb;
+    }
+    
+    .form-feedback.error {
+      display: block;
+      background-color: #f8d7da;
+      color: #721c24;
+      border: 1px solid #f5c6cb;
+    }
+  </style>
 
   <!-- JSON-LD: Person -->
   <script type="application/ld+json">
@@ -71,13 +124,16 @@
 
 <body>
 
+<!-- Skip to main content for accessibility -->
+<a href="#home" class="skip-link" style="position:absolute;left:-9999px;top:0;z-index:999999;padding:1em;background:#000;color:#fff;text-decoration:none;">Skip to main content</a>
+
 <!-- PRE LOADER -->
-<div class="preloader">
+<div class="preloader" role="status" aria-label="Loading">
   <div class="spinner"><span class="spinner-rotate"></span></div>
 </div>
 
 <!-- HOME / HERO -->
-<section id="home" class="parallax-section">
+<section id="home" class="parallax-section" role="banner">
   <div class="container">
     <div class="row">
       <div class="col-md-offset-5 col-md-7 col-sm-12">
@@ -94,7 +150,7 @@
 </section>
 
 <!-- OVERVIEW / PROFILE -->
-<section id="service" class="parallax-section">
+<section id="service" class="parallax-section" role="region" aria-label="Profile Overview">
   <div class="wow fadeInUp container" data-wow-delay="0.2s">
     <div class="row">
       <div class='row'>
@@ -147,7 +203,7 @@
 </section>
 
 <!-- EDUCATION -->
-<section id="about" class="parallax-section">
+<section id="about" class="parallax-section" role="region" aria-label="Education">
   <div class="container">
     <div class="row">
       <div class="wow fadeInUp section-title" data-wow-delay="0.2s">
@@ -187,7 +243,7 @@
 </section>
 
 <!-- EXPERIENCE -->
-<section id="work" class="parallax-section">
+<section id="work" class="parallax-section" role="region" aria-label="Experience">
   <div class="container">
     <div class="row">
       <div class="wow fadeInUp section-title" data-wow-delay="0.2s">
@@ -256,7 +312,7 @@
 </section>
 
 <!-- PROJECTS -->
-<section id="projects" class="parallax-section">
+<section id="projects" class="parallax-section" role="region" aria-label="Projects">
   <div class="container">
     <div class="row">
       <div class="wow fadeInUp section-title" data-wow-delay="0.2s">
@@ -271,10 +327,10 @@
             <h4 class="white-color">Trainline</h4>
             <p>Full-stack booking app (Django REST API, React, Docker). Auth, seat selection, ticketing, transactions, notifications, chat. Normalized DB schema (User, Ticket, Passenger, Payment, Notifications).</p>
             <div class="skill-container">
-              <button class="skill"><h6>Django</h6></button>
-              <button class="skill"><h6>React</h6></button>
-              <button class="skill"><h6>Docker</h6></button>
-              <button class="skill"><h6>PostgreSQL</h6></button>
+              <span class="skill">Django</span>
+              <span class="skill">React</span>
+              <span class="skill">Docker</span>
+              <span class="skill">PostgreSQL</span>
             </div>
           </div>
         </a>
@@ -287,9 +343,9 @@
             <h4 class="white-color">Flight Booking Application</h4>
             <p>CRUD booking platform (PostgreSQL, REST APIs, HTML/CSS). DAOAuthenticator for secure login; transaction-backed booking.</p>
             <div class="skill-container">
-              <button class="skill"><h6>PostgreSQL</h6></button>
-              <button class="skill"><h6>REST</h6></button>
-              <button class="skill"><h6>HTML/CSS</h6></button>
+              <span class="skill">PostgreSQL</span>
+              <span class="skill">REST</span>
+              <span class="skill">HTML/CSS</span>
             </div>
           </div>
         </a>
@@ -302,9 +358,9 @@
             <h4 class="white-color">Meeting to Tasks</h4>
             <p>Converts raw transcripts  &amp; into actionable tasks.</p>
             <div class="skill-container">
-            <button class="skill"><h6>Ollama (phi3:mini)</h6></button>
-            <button class="skill"><h6>FAISS</h6></button>
-            <button class="skill"><h6>Github REST API</h6></button>
+            <span class="skill">Ollama (phi3:mini)</span>
+            <span class="skill">FAISS</span>
+            <span class="skill">Github REST API</span>
             </div>
           </div>
         </a>
@@ -317,8 +373,8 @@
             <h4 class="white-color">Personal Website</h4>
             <p>Portfolio of academic &amp; career endeavors.</p>
             <div class="skill-container">
-              <button class="skill"><h6>HTML/CSS</h6></button>
-              <button class="skill"><h6>JavaScript</h6></button>
+              <span class="skill">HTML/CSS</span>
+              <span class="skill">JavaScript</span>
             </div>
           </div>
         </a>
@@ -331,8 +387,8 @@
             <h4 class="white-color">DFA Checker</h4>
             <p>Deterministic finite automata checker in Java and Python. Validates input strings against defined rules and states.</p>
             <div class="skill-container">
-              <button class="skill"><h6>Java</h6></button>
-              <button class="skill"><h6>Python</h6></button>
+              <span class="skill">Java</span>
+              <span class="skill">Python</span>
             </div>
           </div>
         </a>
@@ -344,7 +400,7 @@
 
 
 <!-- LEADERSHIP  -->
-<section id="leadership" class="parallax-section">
+<section id="leadership" class="parallax-section" role="region" aria-label="Leadership">
   <div class="container">
     <div class="row">
       <div class="wow fadeInUp section-title" data-wow-delay="0.2s">
@@ -363,7 +419,7 @@
 </section>
 
 <!-- CONTACT -->
-<section id="contact" class="parallax-section">
+<section id="contact" class="parallax-section" role="region" aria-label="Contact Form">
   <div class="container">
     <div class="row">
 
@@ -376,10 +432,10 @@
 
       <div class="col-md-8 col-sm-10 col-md-offset-2">
         <div class="contact-card wow fadeInUp" data-wow-delay="0.3s">
-          <!-- https://formspree.io/forms/mgvzbgqr/submissions  -->
+          <!-- Formspree endpoint: Public by design, protected by Formspree's spam filtering & honeypot -->
           <form id="contact-form" action="https://formspree.io/f/mgvzbgqr" method="POST" novalidate>
-            <!-- anti-spam honeypot -->
-            <input type="text" name="_gotcha" tabindex="-1" autocomplete="off" class="hp-field">
+            <!-- anti-spam honeypot - positioned offscreen -->
+            <input type="text" name="_gotcha" autocomplete="off" class="hp-field" aria-hidden="true">
 
             <!-- subject shown in email -->
             <input type="hidden" name="_subject" value="Portfolio contact from hs14235.github.io">
@@ -432,7 +488,7 @@
 
 
 <!-- FOOTER -->
-<footer>
+<footer role="contentinfo">
   <div class="container bottom">
     <div class="row">
       <div class="wow fadeInUp col-md-12 col-sm-12" data-wow-delay="0.4s">
@@ -450,13 +506,13 @@
 </footer>
 
 <!-- SCRIPTS: jQuery first, then Bootstrap, then plugins, then initializers -->
-<script src="js/jquery.js"></script>
+<script src="js/jquery.min.js"></script>
 <script src="js/bootstrap.min.js"></script>
-<script src="js/jquery.parallax.js"></script>
-<script src="js/smoothscroll.js"></script>
-<script src="js/jquery.magnific-popup.min.js"></script>
-<script src="js/magnific-popup-options.js"></script>
-<script src="js/wow.min.js"></script>
-<script src="js/custom.js"></script>
+<script src="js/jquery.parallax.js" defer></script>
+<script src="js/smoothscroll.js" defer></script>
+<script src="js/jquery.magnific-popup.min.js" defer></script>
+<script src="js/magnific-popup-options.js" defer></script>
+<script src="js/wow.min.js" defer></script>
+<script src="js/custom.js" defer></script>
 </body>
 </html>

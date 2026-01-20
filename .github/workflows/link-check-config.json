@@ -1,0 +1,23 @@
+{
+  "ignorePatterns": [
+    {
+      "pattern": "^http://localhost"
+    },
+    {
+      "pattern": "^https://formspree.io"
+    },
+    {
+      "pattern": "^https://validator.w3.org"
+    },
+    {
+      "pattern": "^https://www.linkedin.com"
+    },
+    {
+      "pattern": "^https://www.free-css.com"
+    },
+    {
+      "pattern": "^https://www.w3.org/WAI/ARIA/apg"
+    }
+  ],
+  "aliveStatusCodes": [200, 206, 429]
+}

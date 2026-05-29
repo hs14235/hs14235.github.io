@@ -1,86 +1,171 @@
+"use strict";
+
 (function ($) {
-  "use strict";
+  var wow;
 
-  // PRE LOADER
-  $(window).on('load', function () {
-    $('.preloader').fadeOut(1000);
+  function getDesktopScale() {
+    if (!window.matchMedia("(min-width: 992px)").matches) {
+      return 1;
+    }
+
+    var scale = parseFloat(getComputedStyle(document.documentElement).getPropertyValue("--site-scale"));
+    return isFinite(scale) && scale > 0 ? scale : 1;
+  }
+
+  function shouldUseScaledDesktopLayout() {
+    return Math.abs(getDesktopScale() - 1) > 0.001;
+  }
+
+  function getRevealLead() {
+    return shouldUseScaledDesktopLayout() ? 180 : 32;
+  }
+
+  function initRevealSystem() {
+    wow = new WOW({
+      mobile: true,
+      live: true,
+      offset: 16
+    });
+
+    // Scale-aware visibility fix for desktop zoom so WOW triggers at the right time.
+    wow.isVisible = function (box) {
+      var offset = box.getAttribute("data-wow-offset") || this.config.offset;
+      var pageTop = window.pageYOffset;
+      var scale = getDesktopScale();
+      var viewportHeight = Math.min(this.element.clientHeight, this.util().innerHeight()) / scale;
+      var viewBottom = pageTop + viewportHeight + getRevealLead() - offset;
+      var top = this.offsetTop(box);
+      var bottom = top + box.clientHeight;
+
+      return viewBottom >= top && bottom >= pageTop;
+    };
+
+    wow.init();
+  }
+
+  function initCriticalReveal() {
+    var criticalBlocks = document.querySelectorAll(".critical-reveal");
+    if (!criticalBlocks.length) {
+      return;
+    }
+
+    if (!("IntersectionObserver" in window)) {
+      criticalBlocks.forEach(function (block) {
+        block.classList.add("is-visible");
+        if (wow && block.classList.contains("wow")) {
+          wow.show(block);
+        }
+      });
+      return;
+    }
+
+    criticalBlocks.forEach(function (block) {
+      var thresholdAttr = parseFloat(block.getAttribute("data-reveal-threshold"));
+      var threshold = isFinite(thresholdAttr) ? thresholdAttr : 0.08;
+      var rootMargin = block.getAttribute("data-reveal-margin") || "0px 0px 14% 0px";
+      var observer = new IntersectionObserver(function (entries, io) {
+        entries.forEach(function (entry) {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("is-visible");
+            if (wow && entry.target.classList.contains("wow")) {
+              wow.show(entry.target);
+            }
+            io.unobserve(entry.target);
+          }
+        });
+      }, {
+        threshold: threshold,
+        rootMargin: rootMargin
+      });
+
+      observer.observe(block);
+    });
+  }
+
+  $(window).on("load", function () {
+    $(".preloader").fadeOut(1000);
+
+    if (wow) {
+      setTimeout(function () {
+        wow.sync();
+        $(window).trigger("scroll");
+        $(window).trigger("resize");
+      }, 150);
+    }
   });
 
-  // navigation Section
-  $('.navbar-collapse a').on('click', function () {
-    $(".navbar-collapse").collapse('hide');
+  $(".navbar-collapse a").on("click", function () {
+    $(".navbar-collapse").collapse("hide");
   });
 
-  // Parallax Js (desktop only)
+  // Keep the later direct anchor fix so the hero CTA still lands on Projects.
+  $(".smoothScroll").off("click").on("click", function (event) {
+    var targetSelector = this.getAttribute("href");
+    var target = targetSelector ? document.querySelector(targetSelector) : null;
+
+    if (!target) {
+      return;
+    }
+
+    event.preventDefault();
+
+    var targetTop = target.getBoundingClientRect().top + window.pageYOffset - 12;
+    window.scrollTo({
+      top: Math.max(0, targetTop),
+      behavior: "smooth"
+    });
+
+    if (window.history && window.history.replaceState) {
+      window.history.replaceState(null, "", targetSelector);
+    } else {
+      window.location.hash = targetSelector;
+    }
+  });
+
   function initParallax() {
-    if ($(window).width() > 992) {
-      $('#home').parallax("50%", 50);
-      $('#service').parallax("50%", 40);
-      $('#about').parallax("50%", 20);
-      $('#work').parallax("50%", 30);
-      $('#contact').parallax("50%", 10);
+    if ($(window).width() > 992 && !shouldUseScaledDesktopLayout()) {
+      $("#home").parallax("50%", 50);
+      $("#service").parallax("50%", 40);
+      $("#about").parallax("50%", 20);
+      $("#work").parallax("50%", 30);
+      $("#contact").parallax("50%", 10);
     }
   }
   initParallax();
 
-  // smoothscroll js (all internal anchors)
-  $(function () {
-    $('a[href^="#"]').on('click', function (event) {
-      var target = $(this.getAttribute('href'));
-      if (target.length) {
-        event.preventDefault();
-        $('html, body').stop().animate({
-          scrollTop: target.offset().top - 49
-        }, 600);
-      }
-    });
-  });
+  initRevealSystem();
+  initCriticalReveal();
 
-  // WOW Animation js
-  new WOW({
-    mobile: true,
-    live: true
-  }).init();
+  var form = document.getElementById("contact-form");
+  var submitBtn = document.getElementById("submitBtn");
+  var formFeedback = document.getElementById("formFeedback");
 
-  // Contact Form Enhancement
-  var form = document.getElementById('contact-form');
-  var submitBtn = document.getElementById('submitBtn');
-  var formFeedback = document.getElementById('formFeedback');
-  
   if (form) {
-    form.addEventListener('submit', function(e) {
-      // Only enhance, don't prevent default - let Formspree handle it
+    form.addEventListener("submit", function () {
       submitBtn.disabled = true;
       submitBtn.innerHTML = '<span class="btn-spinner" aria-hidden="true"></span> Sending...';
-      
-      // Add timeout to re-enable button in case of issues
-      setTimeout(function() {
+
+      setTimeout(function () {
         if (submitBtn.disabled) {
           submitBtn.disabled = false;
           submitBtn.innerHTML = '<span class="btn-spinner" aria-hidden="true"></span> Send Message';
-          formFeedback.className = 'form-feedback error';
-          formFeedback.textContent = 'Submission timeout. Please check your connection and try again.';
+          formFeedback.className = "form-feedback error";
+          formFeedback.textContent = "Submission timeout. Please check your connection and try again.";
         }
       }, 10000);
     });
-    
-    // Handle Formspree redirect by checking URL hash
-    // Note: Referrer check is for UX convenience only (showing success message)
-    // Not used for authentication/authorization - Formspree handles actual security
-    // Secure check - ensure referrer is exactly formspree.io (no subdomains)
-    if (window.location.hash === '#contact' && document.referrer) {
+
+    if (window.location.hash === "#contact" && document.referrer) {
       try {
         var referrerUrl = new URL(document.referrer);
-        // Only accept formspree.io - no subdomains or similar domains
-        if (referrerUrl.hostname === 'formspree.io') {
-          formFeedback.className = 'form-feedback success';
-          formFeedback.textContent = '✓ Message sent successfully! I will get back to you soon.';
+        if (referrerUrl.hostname === "formspree.io") {
+          formFeedback.className = "form-feedback success";
+          formFeedback.textContent = "Message sent successfully! I will get back to you soon.";
           form.reset();
         }
       } catch (e) {
-        // Invalid URL, ignore
+        // Ignore malformed referrers.
       }
     }
   }
-
 })(jQuery);

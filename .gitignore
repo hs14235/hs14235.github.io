@@ -28,3 +28,7 @@ bower_components/
 # OS files
 Thumbs.db
 .DS_Store
+
+# Local portfolio media kept off GitHub Pages history
+/media/gulfstream/unreal-demo.mp4
+/media/gulfstream/unreal-lighting.mp4

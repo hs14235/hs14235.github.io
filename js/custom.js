@@ -82,6 +82,32 @@
     });
   }
 
+  function initProjectReadMore() {
+    $("#projects .service-thumb").each(function () {
+      var card = $(this);
+      var description = card.children("p").first();
+
+      if (!description.length || card.find(".project-read-more").length) {
+        return;
+      }
+
+      card.addClass("has-read-more");
+
+      var button = $('<button type="button" class="project-read-more" aria-expanded="false">Read more</button>');
+
+      button.on("click", function (event) {
+        event.preventDefault();
+        event.stopPropagation();
+
+        var expanded = card.toggleClass("is-expanded").hasClass("is-expanded");
+        button.attr("aria-expanded", expanded ? "true" : "false");
+        button.text(expanded ? "Show less" : "Read more");
+      });
+
+      description.after(button);
+    });
+  }
+
   $(window).on("load", function () {
     $(".preloader").fadeOut(1000);
 
@@ -135,6 +161,7 @@
 
   initRevealSystem();
   initCriticalReveal();
+  initProjectReadMore();
 
   var form = document.getElementById("contact-form");
   var submitBtn = document.getElementById("submitBtn");

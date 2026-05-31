@@ -31,6 +31,7 @@ $(document).ready(function() {
     var viewer = $('#media-gallery-modal');
     var currentIndex = 0;
     var touchStartX = null;
+    var pageHasHttpOrigin = /^https?:$/.test(window.location.protocol) && window.location.origin && window.location.origin !== 'null';
 
     if (!items.length) {
       return;
@@ -65,6 +66,28 @@ $(document).ready(function() {
         this.pause();
         this.currentTime = 0;
       });
+    };
+
+    var buildYouTubeEmbedUrl = function(rawUrl) {
+      if (!rawUrl) {
+        return '';
+      }
+
+      try {
+        var url = new URL(rawUrl, window.location.href);
+
+        url.searchParams.set('autoplay', '1');
+        url.searchParams.set('rel', '0');
+
+        if (pageHasHttpOrigin) {
+          url.searchParams.set('origin', window.location.origin);
+          url.searchParams.set('widget_referrer', window.location.href);
+        }
+
+        return url.toString();
+      } catch (error) {
+        return rawUrl;
+      }
     };
 
     var renderMedia = function(index) {
@@ -102,11 +125,11 @@ $(document).ready(function() {
         }
       } else if (mediaType === 'youtube') {
         $('<iframe>', {
-          src: embedUrl,
+          src: buildYouTubeEmbedUrl(embedUrl || src),
           title: text || 'Embedded YouTube video',
           frameborder: '0',
-          allow: 'encrypted-media; picture-in-picture',
-          referrerpolicy: 'no-referrer',
+          allow: 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share',
+          referrerpolicy: 'strict-origin-when-cross-origin',
           allowfullscreen: 'allowfullscreen'
         }).appendTo(stage);
       } else {

@@ -2270,6 +2270,99 @@ footer p {
   color: #f0f0f0;
 }
 
+#projects .service-thumb--private {
+  cursor: default;
+}
+
+#projects .project-private-meta {
+  margin-top: 18px;
+  padding-top: 18px;
+  border-top: 1px solid rgba(255,255,255,.12);
+}
+
+#projects .project-private-status {
+  display: inline-flex;
+  align-items: center;
+  min-height: 30px;
+  padding: 7px 12px;
+  border: 1px solid rgba(255,255,255,.24);
+  border-radius: 999px;
+  background: rgba(255,255,255,.05);
+  color: #f0f0f0;
+  font-family: 'Roboto Mono', sans-serif;
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 1.15px;
+  line-height: 1;
+  text-transform: uppercase;
+}
+
+#projects .project-private-note {
+  margin: 12px 0 0;
+  color: rgba(255,255,255,.78);
+}
+
+#projects .project-private-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 14px;
+}
+
+#projects .project-private-link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 34px;
+  padding: 8px 14px;
+  border: 1px solid rgba(255,255,255,.24);
+  border-radius: 999px;
+  background: rgba(255,255,255,.03);
+  color: #f0f0f0;
+  font-family: 'Roboto Mono', sans-serif;
+  font-size: 10px;
+  font-weight: 500;
+  letter-spacing: 1.1px;
+  line-height: 1;
+  text-transform: uppercase;
+  transition: background .35s ease, border-color .35s ease, color .35s ease, transform .35s ease;
+}
+
+#projects .project-private-link:hover,
+#projects .project-private-link:focus {
+  background: #f0f0f0;
+  border-color: #f0f0f0;
+  color: var(--site-black);
+  transform: translateY(-1px);
+}
+
+#projects .service-thumb:hover .project-private-meta {
+  border-top-color: rgba(var(--site-black-rgb), .14);
+}
+
+#projects .service-thumb:hover .project-private-status {
+  border-color: rgba(var(--site-black-rgb), .16);
+  background: rgba(var(--site-black-rgb), .04);
+  color: rgba(var(--site-black-rgb), .84);
+}
+
+#projects .service-thumb:hover .project-private-note {
+  color: rgba(var(--site-black-rgb), .7);
+}
+
+#projects .service-thumb:hover .project-private-link {
+  border-color: rgba(var(--site-black-rgb), .16);
+  background: rgba(var(--site-black-rgb), .03);
+  color: var(--site-black);
+}
+
+#projects .service-thumb:hover .project-private-link:hover,
+#projects .service-thumb:hover .project-private-link:focus {
+  background: var(--site-black);
+  border-color: var(--site-black);
+  color: #f0f0f0;
+}
+
 @media (max-width: 767px) {
   #projects .service-thumb.has-read-more:not(.is-expanded) > p {
     -webkit-line-clamp: 7;
@@ -2278,6 +2371,16 @@ footer p {
   #projects .project-read-more {
     margin-top: 12px;
     margin-bottom: 14px;
+    font-size: 9px;
+    letter-spacing: 1px;
+    padding: 7px 12px;
+  }
+
+  #projects .project-private-links {
+    gap: 8px;
+  }
+
+  #projects .project-private-link {
     font-size: 9px;
     letter-spacing: 1px;
     padding: 7px 12px;

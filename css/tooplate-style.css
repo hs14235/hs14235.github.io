@@ -93,7 +93,7 @@ p {
 }
 
 .home-tagline {
-  color: var(--site-black);
+  color: var(grey);
 }
 
 
@@ -1857,6 +1857,8 @@ footer p {
     flex: 0 0 50%;
     max-width: 50%;
   }
+
+  
 }
 
 /* 1 column on xs (<768px) */

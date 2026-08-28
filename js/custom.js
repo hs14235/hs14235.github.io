@@ -20,6 +20,32 @@
     return shouldUseScaledDesktopLayout() ? 180 : 32;
   }
 
+  function getPageScrollRoot() {
+    return document.body.scrollHeight > document.documentElement.scrollHeight
+      ? document.body
+      : document.scrollingElement;
+  }
+
+  var scrollAnimationFrame;
+  function animatePageScroll(scrollRoot, targetTop) {
+    var startTop = scrollRoot.scrollTop;
+    var distance = targetTop - startTop;
+    var startTime = performance.now();
+
+    window.cancelAnimationFrame(scrollAnimationFrame);
+    function step(timestamp) {
+      var elapsed = Math.min(1, (timestamp - startTime) / 720);
+      var eased = 1 - Math.pow(1 - elapsed, 3);
+      scrollRoot.scrollTop = startTop + distance * eased;
+
+      if (elapsed < 1) {
+        scrollAnimationFrame = window.requestAnimationFrame(step);
+      }
+    }
+
+    scrollAnimationFrame = window.requestAnimationFrame(step);
+  }
+
   function initRevealSystem() {
     wow = new WOW({
       mobile: true,
@@ -118,8 +144,9 @@
     }
 
     function updateNavigation() {
-      var scrollableHeight = document.documentElement.scrollHeight - window.innerHeight;
-      var progress = scrollableHeight > 0 ? (window.pageYOffset / scrollableHeight) * 100 : 0;
+      var scrollRoot = getPageScrollRoot();
+      var scrollableHeight = scrollRoot.scrollHeight - window.innerHeight;
+      var progress = scrollableHeight > 0 ? (scrollRoot.scrollTop / scrollableHeight) * 100 : 0;
       progressBar.style.width = Math.min(100, Math.max(0, progress)) + "%";
 
       var activeSection = sections[0].id;
@@ -134,20 +161,9 @@
       });
     }
 
-    var ticking = false;
-    function requestNavigationUpdate() {
-      if (ticking) {
-        return;
-      }
-      ticking = true;
-      window.requestAnimationFrame(function () {
-        updateNavigation();
-        ticking = false;
-      });
-    }
-
-    window.addEventListener("scroll", requestNavigationUpdate, { passive: true });
-    window.addEventListener("resize", requestNavigationUpdate);
+    window.addEventListener("scroll", updateNavigation, { passive: true });
+    getPageScrollRoot().addEventListener("scroll", updateNavigation, { passive: true });
+    window.addEventListener("resize", updateNavigation);
     updateNavigation();
   }
 
@@ -178,11 +194,9 @@
 
     event.preventDefault();
 
-    var targetTop = target.getBoundingClientRect().top + window.pageYOffset - 12;
-    window.scrollTo({
-      top: Math.max(0, targetTop),
-      behavior: "smooth"
-    });
+    var scrollRoot = getPageScrollRoot();
+    var targetTop = target.getBoundingClientRect().top + scrollRoot.scrollTop - 12;
+    animatePageScroll(scrollRoot, Math.max(0, targetTop));
 
     if (window.history && window.history.replaceState) {
       window.history.replaceState(null, "", targetSelector);

@@ -294,6 +294,11 @@ a:hover, a:active, a:focus {
           animation-duration: .72s !important;
 }
 
+/* Keep content available when legacy scroll containers prevent WOW from scanning. */
+.wow {
+  visibility: visible !important;
+}
+
 .critical-reveal {
   opacity: 0;
   transform: translate3d(0, 16px, 0);

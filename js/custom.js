@@ -56,7 +56,8 @@
     // Scale-aware visibility fix for desktop zoom so WOW triggers at the right time.
     wow.isVisible = function (box) {
       var offset = box.getAttribute("data-wow-offset") || this.config.offset;
-      var pageTop = window.pageYOffset;
+      var pageScrollRoot = getPageScrollRoot();
+      var pageTop = pageScrollRoot.scrollTop;
       var scale = getDesktopScale();
       var viewportHeight = Math.min(this.element.clientHeight, this.util().innerHeight()) / scale;
       var viewBottom = pageTop + viewportHeight + getRevealLead() - offset;
@@ -67,6 +68,13 @@
     };
 
     wow.init();
+
+    var pageScrollRoot = getPageScrollRoot();
+    if (pageScrollRoot !== window) {
+      pageScrollRoot.addEventListener("scroll", function () {
+        $(window).trigger("scroll");
+      }, { passive: true });
+    }
   }
 
   function initCriticalReveal() {

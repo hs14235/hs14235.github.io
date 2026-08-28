@@ -108,6 +108,49 @@
     });
   }
 
+  function initPortfolioNavigation() {
+    var progressBar = document.getElementById("reading-progress-bar");
+    var navLinks = document.querySelectorAll(".portfolio-rail-nav a[data-section]");
+    var sections = document.querySelectorAll("section[id]");
+
+    if (!progressBar || !navLinks.length || !sections.length) {
+      return;
+    }
+
+    function updateNavigation() {
+      var scrollableHeight = document.documentElement.scrollHeight - window.innerHeight;
+      var progress = scrollableHeight > 0 ? (window.pageYOffset / scrollableHeight) * 100 : 0;
+      progressBar.style.width = Math.min(100, Math.max(0, progress)) + "%";
+
+      var activeSection = sections[0].id;
+      sections.forEach(function (section) {
+        if (section.getBoundingClientRect().top <= window.innerHeight * 0.32) {
+          activeSection = section.id;
+        }
+      });
+
+      navLinks.forEach(function (link) {
+        link.classList.toggle("is-active", link.getAttribute("data-section") === activeSection);
+      });
+    }
+
+    var ticking = false;
+    function requestNavigationUpdate() {
+      if (ticking) {
+        return;
+      }
+      ticking = true;
+      window.requestAnimationFrame(function () {
+        updateNavigation();
+        ticking = false;
+      });
+    }
+
+    window.addEventListener("scroll", requestNavigationUpdate, { passive: true });
+    window.addEventListener("resize", requestNavigationUpdate);
+    updateNavigation();
+  }
+
   $(window).on("load", function () {
     $(".preloader").fadeOut(1000);
 
@@ -162,6 +205,7 @@
   initRevealSystem();
   initCriticalReveal();
   initProjectReadMore();
+  initPortfolioNavigation();
 
   var form = document.getElementById("contact-form");
   var submitBtn = document.getElementById("submitBtn");

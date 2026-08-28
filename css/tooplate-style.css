@@ -1674,6 +1674,16 @@ footer p {
   padding-bottom: 10px;
 }
 
+.footer-return-link {
+  margin-bottom: 28px;
+  color: #f0f0f0 !important;
+}
+
+.footer-return-link > span {
+  margin-right: 9px;
+  letter-spacing: 0;
+}
+
 
 
 /*---------------------------------------

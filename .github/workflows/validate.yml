@@ -10,12 +10,18 @@ on:
 jobs:
   validate:
     runs-on: ubuntu-latest
+    timeout-minutes: 10
     permissions:
       contents: read
     
     steps:
     - name: Checkout repository
       uses: actions/checkout@v4
+      with:
+        persist-credentials: false
+
+    - name: Run portfolio regression tests
+      run: npm test
       
     - name: Validate HTML
       uses: Cyb3r-Jak3/html5validator-action@v7.2.0

@@ -3,6 +3,10 @@
 (function ($) {
   var wow;
 
+  function prefersReducedMotion() {
+    return Boolean(window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches);
+  }
+
   function getDesktopScale() {
     if (!window.matchMedia("(min-width: 992px)").matches) {
       return 1;
@@ -28,6 +32,11 @@
 
   var scrollAnimationFrame;
   function animatePageScroll(scrollRoot, targetTop) {
+    if (prefersReducedMotion()) {
+      scrollRoot.scrollTop = targetTop;
+      return;
+    }
+
     var startTop = scrollRoot.scrollTop;
     var distance = targetTop - startTop;
     var startTime = performance.now();
@@ -47,6 +56,14 @@
   }
 
   function initRevealSystem() {
+    if (prefersReducedMotion()) {
+      document.documentElement.classList.add("reduced-motion");
+      document.querySelectorAll(".wow").forEach(function (element) {
+        element.style.visibility = "visible";
+      });
+      return;
+    }
+
     wow = new WOW({
       mobile: true,
       live: true,
@@ -80,6 +97,13 @@
   function initCriticalReveal() {
     var criticalBlocks = document.querySelectorAll(".critical-reveal");
     if (!criticalBlocks.length) {
+      return;
+    }
+
+    if (prefersReducedMotion()) {
+      criticalBlocks.forEach(function (block) {
+        block.classList.add("is-visible");
+      });
       return;
     }
 
@@ -165,7 +189,13 @@
       });
 
       navLinks.forEach(function (link) {
-        link.classList.toggle("is-active", link.getAttribute("data-section") === activeSection);
+        var isActive = link.getAttribute("data-section") === activeSection;
+        link.classList.toggle("is-active", isActive);
+        if (isActive) {
+          link.setAttribute("aria-current", "location");
+        } else {
+          link.removeAttribute("aria-current");
+        }
       });
     }
 
@@ -176,7 +206,11 @@
   }
 
   $(window).on("load", function () {
-    $(".preloader").fadeOut(1000);
+    if (prefersReducedMotion()) {
+      $(".preloader").hide();
+    } else {
+      $(".preloader").fadeOut(1000);
+    }
 
     if (wow) {
       setTimeout(function () {
@@ -214,7 +248,7 @@
   });
 
   function initParallax() {
-    if ($(window).width() > 992 && !shouldUseScaledDesktopLayout()) {
+    if (!prefersReducedMotion() && $(window).width() > 992 && !shouldUseScaledDesktopLayout()) {
       $("#home").parallax("50%", 50);
       $("#service").parallax("50%", 40);
       $("#about").parallax("50%", 20);

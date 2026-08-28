@@ -1,30 +1,72 @@
-# Editor directories and files
+# Secrets and machine-local configuration
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+*.p12
+*.pfx
+*.jks
+credentials*.json
+secrets*.json
+.npmrc
+.pypirc
+
+# Dependencies and package-manager caches
+node_modules/
+bower_components/
+.npm/
+.yarn/
+.pnpm-store/
+
+# Build and generated output
+dist/
+build/
+out/
+.cache/
+.parcel-cache/
+*.min.js.map
+*.min.css.map
+
+# Test and coverage output
+coverage/
+.nyc_output/
+playwright-report/
+test-results/
+
+# Python artifacts (for future tooling)
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.venv/
+venv/
+
+# Logs, runtime state, and temporary files
+*.log
+*.pid
+*.seed
+*.tmp
+*.temp
+*.bak
+*.orig
+*~
+
+# Editors and IDEs
 .vscode/*
 !.vscode/settings.json
-.idea
-.DS_Store
+.idea/
+*.code-workspace
 *.suo
 *.ntvs*
 *.njsproj
 *.sln
 *.sw?
 
-# Temporary files
-*.tmp
-*.log
-*~
-.cache
-
-# Build outputs (if added in future)
-dist/
-build/
-*.min.js.map
-*.min.css.map
-
-# Dependencies (if added in future)
-node_modules/
-bower_components/
-
-# OS files
-Thumbs.db
+# Operating-system metadata
 .DS_Store
+._*
+Thumbs.db
+Desktop.ini
+$RECYCLE.BIN/

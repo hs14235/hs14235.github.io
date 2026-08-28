@@ -1,0 +1,12 @@
+{
+  "name": "hs14235-portfolio",
+  "private": true,
+  "version": "1.0.0",
+  "description": "Static portfolio validation tests",
+  "scripts": {
+    "test": "node --test"
+  },
+  "engines": {
+    "node": ">=20"
+  }
+}

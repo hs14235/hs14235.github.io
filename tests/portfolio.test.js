@@ -71,6 +71,11 @@ test("the visual redesign stays within the phone breakpoint", () => {
   assert.match(css.slice(markerIndex), /#home \{[\s\S]*?height:\s*88svh !important/);
 });
 
+test("the desktop rail waits for enough horizontal gutter", () => {
+  assert.match(css, /@media \(min-width:\s*1600px\) \{[\s\S]*?\.portfolio-rail \{[\s\S]*?display:\s*flex/);
+  assert.doesNotMatch(css, /@media \(min-width:\s*1400px\) \{[\s\S]*?\.portfolio-rail \{[\s\S]*?display:\s*flex/);
+});
+
 test("one smooth-scroll implementation owns portfolio anchor clicks", () => {
   assert.doesNotMatch(html, /src=["']js\/smoothscroll\.js["']/i);
   assert.match(customJs, /requestAnimationFrame\(step\)/);

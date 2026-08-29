@@ -82,6 +82,17 @@ test("WOW receives updates from the page's body scroll root", () => {
   assert.match(customJs, /wow\.scrollHandler\(\)/);
 });
 
+test("the hero permanently shows the complete photo without zoom controls", () => {
+  const hero = html.match(/<section\s+id="home"[\s\S]*?<\/section>/i)?.[0] || "";
+
+  assert.match(hero, /<img\b[^>]*src="images\/profile\.jpg"[^>]*width="1280"[^>]*height="960"/i);
+  assert.doesNotMatch(hero, /hero-photo-zoom/i);
+  assert.match(css, /\.hero-photo-media[\s\S]*?transform:\s*translate\(-50%, -50%\)/);
+  assert.doesNotMatch(customJs, /initHeroPhotoZoom|is-photo-expanded|hero-photo-zoom/);
+  assert.doesNotMatch(customJs, /\$\("#home"\)\.parallax/);
+  assert.ok(fs.existsSync(path.join(root, "images", "profile.jpg")), "hero photo is missing");
+});
+
 test("the preloader cannot wait on large gallery downloads", () => {
   assert.match(customJs, /\$\(dismissPreloader\)/);
   assert.match(customJs, /window\.setTimeout\(dismissPreloader, 3000\)/);
@@ -102,5 +113,29 @@ test("all local script references resolve to tracked files", () => {
   assert.ok(localSources.length > 0, "expected local scripts");
   for (const source of localSources) {
     assert.ok(fs.existsSync(path.join(root, source.replace(/^\//, ""))), `${source} does not exist`);
+  }
+});
+
+test("all local image sources are portable and resolve from the document", () => {
+  const sources = [...html.matchAll(/<img\b[^>]*\bsrc=["']([^"']+)["']/gi)].map((match) => match[1]);
+  const localSources = sources.filter((source) => !/^(?:https?:|data:)/i.test(source));
+
+  assert.ok(localSources.length > 0, "expected local images");
+  for (const source of localSources) {
+    assert.doesNotMatch(source, /^\//, `${source} is root-relative and will break in direct or nested previews`);
+    assert.ok(fs.existsSync(path.join(root, source)), `${source} does not exist`);
+  }
+});
+
+test("all local demo sources are portable and resolve from the document", () => {
+  const sources = [...html.matchAll(/\b(?:href|src)=["']([^"']+\.(?:mp4|mov|webm|m4v))["']/gi)].map(
+    (match) => match[1],
+  );
+  const localSources = sources.filter((source) => !/^(?:https?:|data:)/i.test(source));
+
+  assert.ok(localSources.length > 0, "expected local demos");
+  for (const source of localSources) {
+    assert.doesNotMatch(source, /^\//, `${source} is root-relative and will break in direct or nested previews`);
+    assert.ok(fs.existsSync(path.join(root, source)), `${source} does not exist`);
   }
 });

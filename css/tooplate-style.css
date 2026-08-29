@@ -383,15 +383,7 @@ a:hover, a:active, a:focus {
 -----------------------------------------*/
 
 #home {
-  /* image + focus lower in the frame */
-  background-image: url('../images/profile.jpg');
-  background-repeat: no-repeat;
-  background-size: cover;
-  background-position: center 75% !important; /* ← show more middle/bottom */
-
-  /* parallax on desktop; we’ll disable on mobile */
-
-  background-color: var(--site-black);
+  background-color: var(--site-blue);
 
  display: -webkit-box;
   display: -webkit-flex;
@@ -406,8 +398,60 @@ a:hover, a:active, a:focus {
   height: 190vh;          /* ← not 300vh */
   width: 100%;
   position: relative;
+  overflow: hidden;
+  isolation: isolate;
 }
 
+.hero-photo-stage {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  overflow: hidden;
+  background: var(--site-blue);
+}
+
+.hero-photo-stage::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  background:
+    linear-gradient(180deg, rgba(8, 10, 15, .05) 8%, rgba(8, 10, 15, .12) 48%, rgba(8, 10, 15, .68) 100%),
+    linear-gradient(90deg, rgba(8, 10, 15, .22), transparent 52%, rgba(8, 10, 15, .14));
+  pointer-events: none;
+}
+
+.hero-photo-media {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 100%;
+  max-width: 133.333vh;
+  max-width: 133.333svh;
+  aspect-ratio: 4 / 3;
+  transform: translate(-50%, -50%);
+}
+
+.hero-photo-media img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+#home > .container {
+  position: relative;
+  z-index: 2;
+}
+
+#home .home-thumb {
+  padding-bottom: clamp(48px, 6vh, 72px);
+}
+
+#home .home-tagline {
+  color: rgba(255, 255, 255, .86);
+  text-shadow: 0 2px 14px rgba(0, 0, 0, .55);
+}
 
 /* Restore template-like hero scroll behavior without changing content. */
 #home {
@@ -2749,15 +2793,10 @@ footer p {
     background-position: 56% 58% !important;
   }
 
-  #home::before {
-    content: '';
-    position: absolute;
-    inset: 0;
-    z-index: 0;
+  #home .hero-photo-stage::after {
     background:
-      linear-gradient(180deg, rgba(8, 10, 15, .06) 10%, rgba(8, 10, 15, .18) 46%, rgba(8, 10, 15, .9) 100%),
-      linear-gradient(90deg, rgba(8, 10, 15, .32), transparent 76%);
-    pointer-events: none;
+      linear-gradient(180deg, rgba(8, 10, 15, .04) 8%, rgba(8, 10, 15, .12) 45%, rgba(8, 10, 15, .74) 100%),
+      linear-gradient(90deg, rgba(8, 10, 15, .22), transparent 76%);
   }
 
   #home .container,

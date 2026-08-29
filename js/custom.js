@@ -64,7 +64,14 @@
       return;
     }
 
-    wow = new WOW({
+    if (typeof window.WOW !== "function") {
+      document.querySelectorAll(".wow").forEach(function (element) {
+        element.style.visibility = "visible";
+      });
+      return;
+    }
+
+    wow = new window.WOW({
       mobile: true,
       live: true,
       offset: 16
@@ -89,7 +96,8 @@
     var pageScrollRoot = getPageScrollRoot();
     if (pageScrollRoot !== window) {
       pageScrollRoot.addEventListener("scroll", function () {
-        $(window).trigger("scroll");
+        // WOW listens on window, while this template scrolls the body element.
+        wow.scrollHandler();
       }, { passive: true });
     }
   }
@@ -205,12 +213,26 @@
     updateNavigation();
   }
 
-  $(window).on("load", function () {
+  var preloaderDismissed = false;
+  function dismissPreloader() {
+    if (preloaderDismissed) {
+      return;
+    }
+
+    preloaderDismissed = true;
     if (prefersReducedMotion()) {
       $(".preloader").hide();
     } else {
-      $(".preloader").fadeOut(1000);
+      $(".preloader").stop(true, true).fadeOut(420);
     }
+  }
+
+  // DOM readiness is enough to reveal the page; large portfolio media loads lazily.
+  $(dismissPreloader);
+  window.setTimeout(dismissPreloader, 3000);
+
+  $(window).on("load", function () {
+    dismissPreloader();
 
     if (wow) {
       setTimeout(function () {

@@ -47,7 +47,8 @@ test("WOW loads before its initializer and remains enabled on mobile", () => {
 
   assert.ok(wowScriptIndex >= 0, "WOW.js script is missing");
   assert.ok(customScriptIndex > wowScriptIndex, "custom.js must load after WOW.js");
-  assert.match(customJs, /new WOW\(\{[\s\S]*?mobile:\s*true,[\s\S]*?live:\s*true,[\s\S]*?offset:\s*16[\s\S]*?\}\)/);
+  assert.match(customJs, /new window\.WOW\(\{[\s\S]*?mobile:\s*true,[\s\S]*?live:\s*true,[\s\S]*?offset:\s*16[\s\S]*?\}\)/);
+  assert.match(customJs, /typeof window\.WOW !== "function"/);
 });
 
 test("animation code honors reduced-motion preferences", () => {
@@ -66,6 +67,32 @@ test("the visual redesign stays within the phone breakpoint", () => {
   assert.ok(mobileMediaIndex >= 0, "mobile presentation block is not breakpoint-scoped");
   assert.match(css.slice(markerIndex), /\.portfolio-rail[\s\S]*?position:\s*fixed/);
   assert.match(css.slice(markerIndex), /#contact \.form-floating label[\s\S]*?order:\s*-1/);
+  assert.match(css.slice(markerIndex), /#service,[\s\S]*?padding-top:\s*52px/);
+  assert.match(css.slice(markerIndex), /#home \{[\s\S]*?height:\s*88svh !important/);
+});
+
+test("one smooth-scroll implementation owns portfolio anchor clicks", () => {
+  assert.doesNotMatch(html, /src=["']js\/smoothscroll\.js["']/i);
+  assert.match(customJs, /requestAnimationFrame\(step\)/);
+  assert.match(customJs, /\(timestamp - startTime\) \/ 720/);
+});
+
+test("WOW receives updates from the page's body scroll root", () => {
+  assert.match(customJs, /pageScrollRoot\.addEventListener\("scroll"/);
+  assert.match(customJs, /wow\.scrollHandler\(\)/);
+});
+
+test("the preloader cannot wait on large gallery downloads", () => {
+  assert.match(customJs, /\$\(dismissPreloader\)/);
+  assert.match(customJs, /window\.setTimeout\(dismissPreloader, 3000\)/);
+  assert.match(html, /@keyframes preloader-failsafe/);
+
+  const galleryImages = html.match(/<img\b[^>]+(?:gulfstream|leadership)[^>]*>/gi) || [];
+  assert.equal(galleryImages.length, 7);
+  for (const tag of galleryImages) {
+    assert.match(tag, /\bloading="lazy"/i, tag);
+    assert.match(tag, /\bdecoding="async"/i, tag);
+  }
 });
 
 test("all local script references resolve to tracked files", () => {

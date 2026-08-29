@@ -72,6 +72,16 @@
       display: flex;
       justify-content: center;
       align-items: center;
+      animation: preloader-failsafe 0.24s ease 3s forwards;
+    }
+
+    /* Never let a slow or failed asset request trap mobile visitors behind the loader. */
+    @keyframes preloader-failsafe {
+      to {
+        opacity: 0;
+        visibility: hidden;
+        pointer-events: none;
+      }
     }
 
     /* Form feedback styles */
@@ -401,7 +411,7 @@
                     <a class="media-popup gulfstream-gallery-card gulfstream-gallery-card--mini"
                       href="/images/gulfstream/team-room.jpg" data-media-type="image"
                       data-caption="Capstone team photo during the Gulfstream AI model generation project.">
-                      <img src="/images/gulfstream/team-room.jpg"
+                      <img src="/images/gulfstream/team-room.jpg" loading="lazy" decoding="async"
                         alt="Capstone team photo after the final presentation for capstone & the client.">
                       <span class="acm-gallery-overlay">
                       </span>
@@ -410,7 +420,7 @@
                     <a class="media-popup gulfstream-gallery-card gulfstream-gallery-card--mini"
                       href="/images/gulfstream/team-lineup-alt.jpg" data-media-type="image"
                       data-caption="Project team lineup with capstone professor, Dr. Ryan Florin.">
-                      <img src="/images/gulfstream/team-lineup-alt.jpg"
+                      <img src="/images/gulfstream/team-lineup-alt.jpg" loading="lazy" decoding="async"
                         alt="Project team lineup with Gulfstream capstone collaborators.">
                       <span class="acm-gallery-overlay">
                         <span class="acm-gallery-tag">Capstone</span>
@@ -430,7 +440,7 @@
                     <a class="media-popup gulfstream-gallery-card gulfstream-gallery-card--wide gulfstream-gallery-card--still"
                       href="/images/gulfstream/team-lineup.jpg" data-media-type="image"
                       data-caption="Hard work pays off!">
-                      <img src="/images/gulfstream/team-lineup.jpg"
+                      <img src="/images/gulfstream/team-lineup.jpg" loading="lazy" decoding="async"
                         alt="Gulfstream AI model generation team with faculty support.">
                       <span class="acm-gallery-overlay">
                         <span class="acm-gallery-tag">Gulfstream Team</span>
@@ -863,7 +873,7 @@
                 <a class="image-popup acm-gallery-card acm-gallery-card--hero"
                   href="/images/leadership/acm-organization-fair-1.jpg"
                   title="Explaining the QR scavenger hunt to students at the ACM organization fair booth.">
-                  <img src="/images/leadership/acm-organization-fair-1.jpg"
+                  <img src="/images/leadership/acm-organization-fair-1.jpg" loading="lazy" decoding="async"
                     alt="Explaining the QR scavenger hunt to a student at the ACM organization fair booth.">
                   <span class="acm-gallery-overlay">
                     <span class="acm-gallery-tag">Organization Fair</span>
@@ -873,7 +883,7 @@
                 <a class="image-popup acm-gallery-card acm-gallery-card--mini"
                   href="/images/leadership/acm-organization-fair-2.jpg"
                   title="ACM President, Vice President & Treasurer at the organization fair booth.">
-                  <img src="/images/leadership/acm-organization-fair-2.jpg"
+                  <img src="/images/leadership/acm-organization-fair-2.jpg" loading="lazy" decoding="async"
                     alt="ACM officers standing in front of the organization fair booth.">
                   <span class="acm-gallery-overlay">
                     <span class="acm-gallery-tag">ACM Team</span>
@@ -883,7 +893,7 @@
                 <a class="image-popup acm-gallery-card acm-gallery-card--mini"
                   href="/images/leadership/acm-organization-fair-3.jpg"
                   title="Walking students through ACM projects and booth materials.">
-                  <img src="/images/leadership/acm-organization-fair-3.jpg"
+                  <img src="/images/leadership/acm-organization-fair-3.jpg" loading="lazy" decoding="async"
                     alt="Walking students through ACM projects and booth materials.">
                   <span class="acm-gallery-overlay">
                     <span class="acm-gallery-tag">Outreach</span>
@@ -893,7 +903,7 @@
                 <a class="image-popup acm-gallery-card acm-gallery-card--wide"
                   href="/images/leadership/acm-organization-fair-4.jpg"
                   title="Students interacting with the ACM demo and scavenger hunt.">
-                  <img src="/images/leadership/acm-organization-fair-4.jpg"
+                  <img src="/images/leadership/acm-organization-fair-4.jpg" loading="lazy" decoding="async"
                     alt="Students interacting with the ACM demo and scavenger hunt.">
                   <span class="acm-gallery-overlay">
                   </span>
@@ -1016,7 +1026,6 @@
   <script src="js/jquery.min.js"></script>
   <script src="js/bootstrap.min.js"></script>
   <script src="js/jquery.parallax.js" defer></script>
-  <script src="js/smoothscroll.js" defer></script>
   <script src="js/jquery.magnific-popup.min.js" defer></script>
   <script src="js/magnific-popup-options.js" defer></script>
   <script src="js/wow.min.js" defer></script>

@@ -2579,7 +2579,7 @@ footer p {
    Everything in this block is intentionally isolated from the desktop layout. */
 @media (max-width: 767px) {
   :root {
-    --mobile-gutter: 20px;
+    --mobile-gutter: 16px;
     --mobile-surface: #f6f8fc;
     --mobile-border: rgba(43, 43, 43, .11);
     --mobile-shadow: 0 14px 36px rgba(31, 38, 54, .09);
@@ -2627,17 +2627,17 @@ footer p {
   #leadership,
   #contact,
   footer {
-    padding-top: 64px;
-    padding-bottom: 64px;
+    padding-top: 52px;
+    padding-bottom: 52px;
   }
 
   #about {
-    padding-top: 64px;
+    padding-top: 52px;
   }
 
   .section-title {
     width: 100%;
-    padding-bottom: 28px;
+    padding-bottom: 22px;
     text-align: left;
   }
 
@@ -2649,7 +2649,7 @@ footer p {
   #projects .section-title h2 {
     max-width: 14ch;
     margin-bottom: 8px;
-    font-size: clamp(27px, 8vw, 34px);
+    font-size: clamp(25px, 7.2vw, 31px);
     line-height: 1.16;
     letter-spacing: -.7px;
   }
@@ -2742,8 +2742,9 @@ footer p {
 
   /* Hero: preserve the photograph while giving the existing copy a clear stage. */
   #home {
-    min-height: 100svh;
-    height: 100svh !important;
+    min-height: 560px;
+    height: 88svh !important;
+    max-height: 760px;
     align-items: stretch !important;
     background-position: 56% 58% !important;
   }
@@ -2787,14 +2788,14 @@ footer p {
   #home .home-thumb {
     width: 100%;
     max-width: 350px;
-    padding: 0 0 calc(92px + env(safe-area-inset-bottom));
+    padding: 0 0 calc(76px + env(safe-area-inset-bottom));
     text-align: left;
   }
 
   #home .home-thumb h1 {
     margin: 0 0 12px;
     color: #ffffff;
-    font-size: clamp(38px, 11.5vw, 48px);
+    font-size: clamp(35px, 10.5vw, 43px);
     font-weight: 700;
     line-height: 1.05;
     letter-spacing: -1.6px;
@@ -2806,16 +2807,16 @@ footer p {
     margin: 0;
     color: rgba(255, 255, 255, .86);
     font-family: 'Roboto Mono', monospace;
-    font-size: 14px;
-    line-height: 1.6;
+    font-size: 13px;
+    line-height: 1.55;
     letter-spacing: .1px;
     text-shadow: 0 2px 14px rgba(0, 0, 0, .55);
   }
 
   #home .section-btn {
-    min-height: 50px;
-    margin-top: 22px;
-    padding: 17px 24px;
+    min-height: 48px;
+    margin-top: 18px;
+    padding: 16px 22px;
     border: 1px solid rgba(255, 255, 255, .28);
     background: rgba(255, 255, 255, .94);
     box-shadow: 0 12px 28px rgba(0, 0, 0, .22);
@@ -2824,8 +2825,8 @@ footer p {
 
   /* Profile: correct the nested Bootstrap gutter and raise reading contrast. */
   .info-list {
-    margin: 0 0 30px;
-    padding: 6px 18px;
+    margin: 0 0 24px;
+    padding: 4px 16px;
     border: 1px solid var(--mobile-border);
     border-radius: 18px;
     background: var(--mobile-surface);
@@ -2833,11 +2834,11 @@ footer p {
   }
 
   .info-list > li {
-    padding: 14px 0;
+    padding: 11px 0;
     border-bottom-color: rgba(43, 43, 43, .1);
     color: #51545b;
-    font-size: 15px;
-    line-height: 1.55;
+    font-size: 14px;
+    line-height: 1.5;
   }
 
   .info-list > li > strong {
@@ -2868,16 +2869,16 @@ footer p {
   .timeline > li,
   .timeline > li > .timeline-content > p {
     color: #555961;
-    font-size: 16px;
-    line-height: 1.72;
+    font-size: 15px;
+    line-height: 1.62;
   }
 
   .about-text > p + p {
-    margin-top: 18px;
+    margin-top: 14px;
   }
 
   .about-btns {
-    margin: 26px 0 32px;
+    margin: 20px 0 26px;
   }
 
   .about-btns > .btn-custom {
@@ -2905,7 +2906,7 @@ footer p {
   .about-project-rail,
   .experience-summary-layout,
   .leadership-summary-layout {
-    gap: 18px;
+    gap: 14px;
   }
 
   .featured-project-card,
@@ -2917,16 +2918,16 @@ footer p {
   }
 
   .featured-project-card {
-    min-height: 150px;
-    padding: 22px 18px;
+    min-height: 132px;
+    padding: 18px 16px;
   }
 
   .featured-project-card--ayoti {
-    min-height: 128px;
+    min-height: 112px;
   }
 
   .project-sidecar-card {
-    padding: 22px 18px;
+    padding: 18px 16px;
   }
 
   .featured-project-card h4,
@@ -2947,7 +2948,7 @@ footer p {
 
   /* Timeline cards are easier to scan than the previous dense outlined blocks. */
   .timeline {
-    padding: 12px 0 0;
+    padding: 8px 0 0;
   }
 
   .timeline::before {
@@ -2956,13 +2957,13 @@ footer p {
   }
 
   .timeline > li {
-    margin-bottom: 24px;
+    margin-bottom: 18px;
     padding-left: 20px;
     text-align: left;
   }
 
   .timeline > li > .timeline-content {
-    padding: 22px 18px;
+    padding: 18px 16px;
     border: 1px solid var(--mobile-border);
     border-radius: 18px;
     background: rgba(255, 255, 255, .82);
@@ -2992,16 +2993,16 @@ footer p {
 
   .timeline > li > .timeline-content h4,
   .leadership-copy > h4 {
-    margin-bottom: 8px;
-    font-size: 18px;
+    margin-bottom: 6px;
+    font-size: 17px;
     line-height: 1.4;
   }
 
   .timeline > li > .timeline-content em,
   .leadership-copy > em {
     color: #666a72;
-    font-size: 14px;
-    line-height: 1.65;
+    font-size: 13px;
+    line-height: 1.55;
   }
 
   .experience-summary-copy > ul,
@@ -3011,7 +3012,7 @@ footer p {
   }
 
   .timeline-content > ul > li + li {
-    margin-top: 10px;
+    margin-top: 7px;
   }
 
   .leadership-chip {
@@ -3032,13 +3033,13 @@ footer p {
   .acm-gallery-card--hero,
   .acm-gallery-card--mini {
     grid-column: auto;
-    min-height: 118px;
+    min-height: 104px;
   }
 
   .gulfstream-gallery-card--wide,
   .acm-gallery-card--wide {
     grid-column: 1 / -1;
-    min-height: 158px;
+    min-height: 142px;
   }
 
   .acm-gallery-tag {
@@ -3048,13 +3049,13 @@ footer p {
   /* Project cards keep their dark, high-contrast state on touch-sized layouts. */
   #projects .container > .row > [class*="col-"],
   #projects .row:not(.section-title-row) > [class*="col-"] {
-    margin-bottom: 18px;
+    margin-bottom: 14px;
   }
 
   #projects .service-thumb,
   #projects .service-thumb:hover {
     top: 0;
-    padding: 24px 20px 20px;
+    padding: 20px 16px 17px;
     border: 1px solid rgba(255, 255, 255, .08);
     border-radius: 18px;
     background: #24272e;
@@ -3076,8 +3077,8 @@ footer p {
   #projects .service-thumb .project-private-note,
   #projects .service-thumb:hover .project-private-note {
     color: rgba(255, 255, 255, .74);
-    font-size: 15px;
-    line-height: 1.72;
+    font-size: 14px;
+    line-height: 1.62;
   }
 
   #projects .service-thumb:hover.has-read-more:not(.is-expanded) > p::after,
@@ -3117,12 +3118,12 @@ footer p {
   #contact .section-title p {
     max-width: 31ch;
     color: #5a5e66;
-    font-size: 16px;
-    line-height: 1.65;
+    font-size: 15px;
+    line-height: 1.58;
   }
 
   .contact-card {
-    padding: 22px 18px;
+    padding: 18px 15px;
     border: 1px solid var(--mobile-border);
     border-radius: 20px;
     background: rgba(255, 255, 255, .82);
@@ -3141,7 +3142,7 @@ footer p {
 
   #contact .form-floating {
     display: flex;
-    margin-bottom: 18px;
+    margin-bottom: 14px;
     flex-direction: column;
   }
 
@@ -3173,7 +3174,7 @@ footer p {
   }
 
   #contact textarea.form-control {
-    min-height: 150px;
+    min-height: 128px;
     padding: 14px;
     resize: vertical;
   }
@@ -3199,7 +3200,7 @@ footer p {
   }
 
   footer {
-    padding-bottom: calc(82px + env(safe-area-inset-bottom));
+    padding-bottom: calc(74px + env(safe-area-inset-bottom));
   }
 
   footer p {

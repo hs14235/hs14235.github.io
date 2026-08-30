@@ -71,9 +71,14 @@ test("the visual redesign stays within the phone breakpoint", () => {
   assert.match(css.slice(markerIndex), /#home \{[\s\S]*?height:\s*88svh !important/);
 });
 
-test("the desktop rail waits for enough horizontal gutter", () => {
-  assert.match(css, /@media \(min-width:\s*1600px\) \{[\s\S]*?\.portfolio-rail \{[\s\S]*?display:\s*flex/);
-  assert.doesNotMatch(css, /@media \(min-width:\s*1400px\) \{[\s\S]*?\.portfolio-rail \{[\s\S]*?display:\s*flex/);
+test("the desktop rail floats without resizing the page body", () => {
+  const railStart = css.indexOf("@media (min-width: 1400px)");
+  const railEnd = css.indexOf("@media (min-width: 992px)", railStart);
+  const desktopRail = css.slice(railStart, railEnd);
+
+  assert.ok(railStart >= 0 && railEnd > railStart, "desktop rail breakpoint is missing");
+  assert.match(desktopRail, /\.portfolio-rail \{[\s\S]*?display:\s*flex/);
+  assert.doesNotMatch(desktopRail, /body > section|body > footer/);
 });
 
 test("one smooth-scroll implementation owns portfolio anchor clicks", () => {
@@ -87,12 +92,17 @@ test("WOW receives updates from the page's body scroll root", () => {
   assert.match(customJs, /wow\.scrollHandler\(\)/);
 });
 
-test("the hero permanently shows the complete photo without zoom controls", () => {
+test("the whole hero photo fills a matching desktop frame without zoom controls", () => {
   const hero = html.match(/<section\s+id="home"[\s\S]*?<\/section>/i)?.[0] || "";
+  const desktopHeroStart = css.indexOf("@media (min-width: 768px)");
+  const desktopHeroEnd = css.indexOf("/*---------------------------------------", desktopHeroStart);
+  const desktopHero = css.slice(desktopHeroStart, desktopHeroEnd);
 
   assert.match(hero, /<img\b[^>]*src="images\/profile\.jpg"[^>]*width="1280"[^>]*height="960"/i);
   assert.doesNotMatch(hero, /hero-photo-zoom/i);
-  assert.match(css, /\.hero-photo-media[\s\S]*?transform:\s*translate\(-50%, -50%\)/);
+  assert.doesNotMatch(css, /\.hero-photo-stage::before/);
+  assert.match(desktopHero, /#home \{[\s\S]*?height:\s*auto[\s\S]*?aspect-ratio:\s*4 \/ 3/);
+  assert.match(desktopHero, /#home \.hero-photo-media \{[\s\S]*?height:\s*100%[\s\S]*?transform:\s*none/);
   assert.doesNotMatch(customJs, /initHeroPhotoZoom|is-photo-expanded|hero-photo-zoom/);
   assert.doesNotMatch(customJs, /\$\("#home"\)\.parallax/);
   assert.ok(fs.existsSync(path.join(root, "images", "profile.jpg")), "hero photo is missing");

@@ -174,8 +174,70 @@
     });
   }
 
+  function initBioReadMore() {
+    var bio = document.getElementById("profile-bio");
+    var details = document.getElementById("profile-bio-details");
+    var button = bio ? bio.querySelector(".bio-read-more") : null;
+    var label = button ? button.querySelector(".bio-read-more-label") : null;
+    var mobileQuery = window.matchMedia("(max-width: 767px)");
+
+    if (!bio || !details || !button || !label) {
+      return;
+    }
+
+    function setExpanded(expanded) {
+      bio.classList.toggle("is-expanded", expanded);
+      button.setAttribute("aria-expanded", expanded ? "true" : "false");
+      details.setAttribute("aria-hidden", expanded ? "false" : "true");
+      label.textContent = expanded ? "Read less" : "Read more";
+
+      if (expanded) {
+        bio.style.setProperty("--bio-details-height", details.scrollHeight + "px");
+      }
+    }
+
+    function syncMobileMode() {
+      if (mobileQuery.matches) {
+        bio.classList.add("has-mobile-read-more");
+        setExpanded(false);
+        return;
+      }
+
+      bio.classList.remove("has-mobile-read-more", "is-expanded");
+      bio.style.removeProperty("--bio-details-height");
+      button.setAttribute("aria-expanded", "false");
+      details.removeAttribute("aria-hidden");
+      label.textContent = "Read more";
+    }
+
+    button.addEventListener("click", function () {
+      if (!mobileQuery.matches) {
+        return;
+      }
+
+      setExpanded(button.getAttribute("aria-expanded") !== "true");
+    });
+
+    window.addEventListener("resize", function () {
+      if (mobileQuery.matches && bio.classList.contains("is-expanded")) {
+        bio.style.setProperty("--bio-details-height", details.scrollHeight + "px");
+      }
+    });
+
+    if (typeof mobileQuery.addEventListener === "function") {
+      mobileQuery.addEventListener("change", syncMobileMode);
+    } else {
+      mobileQuery.addListener(syncMobileMode);
+    }
+
+    syncMobileMode();
+  }
+
   function initPortfolioNavigation() {
     var progressBar = document.getElementById("reading-progress-bar");
+    var portfolioRail = document.querySelector(".portfolio-rail");
+    var bioDescription = document.querySelector("#service .about-text");
+    var desktopRailQuery = window.matchMedia("(min-width: 1400px)");
     var navLinks = document.querySelectorAll(".portfolio-rail-nav a[data-section]");
     var sections = document.querySelectorAll("section[id]");
 
@@ -188,6 +250,15 @@
       var scrollableHeight = scrollRoot.scrollHeight - window.innerHeight;
       var progress = scrollableHeight > 0 ? (scrollRoot.scrollTop / scrollableHeight) * 100 : 0;
       progressBar.style.width = Math.min(100, Math.max(0, progress)) + "%";
+
+      if (portfolioRail && bioDescription) {
+        var isDesktopRail = desktopRailQuery.matches;
+        var hasPassedBio = bioDescription.getBoundingClientRect().bottom <= window.innerHeight * 0.7;
+        var shouldShowRail = !isDesktopRail || hasPassedBio;
+
+        portfolioRail.classList.toggle("is-visible", shouldShowRail);
+        portfolioRail.setAttribute("aria-hidden", isDesktopRail && !shouldShowRail ? "true" : "false");
+      }
 
       var activeSection = sections[0].id;
       sections.forEach(function (section) {
@@ -205,6 +276,10 @@
           link.removeAttribute("aria-current");
         }
       });
+    }
+
+    if (portfolioRail && bioDescription) {
+      portfolioRail.classList.add("is-reveal-ready");
     }
 
     window.addEventListener("scroll", updateNavigation, { passive: true });
@@ -282,6 +357,7 @@
   initRevealSystem();
   initCriticalReveal();
   initProjectReadMore();
+  initBioReadMore();
   initPortfolioNavigation();
 
   var form = document.getElementById("contact-form");

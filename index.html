@@ -230,7 +230,7 @@
           <div class='col-md-8'>
             <div class="about-summary-layout">
               <div class="about-summary-copy">
-                <div class="about-text">
+                <div class="about-text" id="profile-bio">
                   <p>
                     I’m a software engineer and Computer Science graduate from Georgia Southern University, focused on
                     full-stack, backend,
@@ -240,25 +240,33 @@
                     projects.
                   </p>
 
-                  <p>
-                    Most recently, I led a five-person Gulfstream Aerospace capstone team developing an AI-powered 3D
-                    asset-generation
-                    platform that reduced successful initial draft generation from multi-hour manual workflows to under
-                    5 minutes. The
-                    system combined local and cloud generation workflows, Blender-based mesh normalization,
-                    browser-based 3D inspection,
-                    glTF 2.0 compatibility handling, and Unreal Engine integration.
-                  </p>
+                  <div class="bio-details" id="profile-bio-details">
+                    <p>
+                      Most recently, I led a five-person Gulfstream Aerospace capstone team developing an AI-powered 3D
+                      asset-generation
+                      platform that reduced successful initial draft generation from multi-hour manual workflows to under
+                      5 minutes. The
+                      system combined local and cloud generation workflows, Blender-based mesh normalization,
+                      browser-based 3D inspection,
+                      glTF 2.0 compatibility handling, and Unreal Engine integration.
+                    </p>
 
-                  <p>
-                    I’ve also built Trainline, a containerized React/Django REST Framework/PostgreSQL booking platform,
-                    and
-                    meeting-to-tasks, a local-first meeting intelligence system using FastAPI, Sentence Transformers,
-                    FAISS, Ollama, MCP,
-                    SQLite, and the GitHub REST API. I’m especially interested in software that turns complex real-world
-                    workflows into
-                    reliable user-facing systems.
-                  </p>
+                    <p>
+                      I’ve also built Trainline, a containerized React/Django REST Framework/PostgreSQL booking platform,
+                      and
+                      meeting-to-tasks, a local-first meeting intelligence system using FastAPI, Sentence Transformers,
+                      FAISS, Ollama, MCP,
+                      SQLite, and the GitHub REST API. I’m especially interested in software that turns complex real-world
+                      workflows into
+                      reliable user-facing systems.
+                    </p>
+                  </div>
+
+                  <button class="bio-read-more" type="button" aria-controls="profile-bio-details"
+                    aria-expanded="false">
+                    <span class="bio-read-more-ellipsis" aria-hidden="true">&hellip;</span>
+                    <span class="bio-read-more-label">Read more</span>
+                  </button>
                 </div>
 
                 <div class='about-btns'>

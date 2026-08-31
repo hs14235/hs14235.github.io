@@ -148,6 +148,55 @@
     });
   }
 
+  function initProfileBioDisclosure() {
+    var bio = document.querySelector(".about-text");
+    var more = document.getElementById("profile-bio-more");
+    var button = document.querySelector(".about-read-more");
+
+    if (!bio || !more || !button || !window.matchMedia) {
+      return;
+    }
+
+    var label = button.querySelector(".about-read-more-label");
+    var mobileQuery = window.matchMedia("(max-width: 767px)");
+
+    function setExpanded(expanded) {
+      bio.classList.toggle("is-expanded", expanded);
+      button.setAttribute("aria-expanded", expanded ? "true" : "false");
+      more.setAttribute("aria-hidden", expanded ? "false" : "true");
+      label.textContent = expanded ? "Show less" : "Read more";
+    }
+
+    function syncDisclosure() {
+      if (mobileQuery.matches) {
+        bio.classList.add("has-mobile-disclosure");
+        button.hidden = false;
+        setExpanded(false);
+        return;
+      }
+
+      bio.classList.remove("has-mobile-disclosure", "is-expanded");
+      button.hidden = true;
+      button.setAttribute("aria-expanded", "true");
+      more.removeAttribute("aria-hidden");
+      label.textContent = "Read more";
+    }
+
+    button.addEventListener("click", function () {
+      if (mobileQuery.matches) {
+        setExpanded(button.getAttribute("aria-expanded") !== "true");
+      }
+    });
+
+    if (typeof mobileQuery.addEventListener === "function") {
+      mobileQuery.addEventListener("change", syncDisclosure);
+    } else {
+      mobileQuery.addListener(syncDisclosure);
+    }
+
+    syncDisclosure();
+  }
+
   function initProjectReadMore() {
     $("#projects .service-thumb").each(function () {
       var card = $(this);
@@ -282,6 +331,7 @@
   initRevealSystem();
   initCriticalReveal();
   initProjectReadMore();
+  initProfileBioDisclosure();
   initPortfolioNavigation();
 
   var form = document.getElementById("contact-form");

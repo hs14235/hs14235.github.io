@@ -71,6 +71,24 @@ test("the visual redesign stays within the phone breakpoint", () => {
   assert.match(css.slice(markerIndex), /#home \{[\s\S]*?height:\s*88svh !important/);
 });
 
+test("the profile bio uses an accessible mobile-only disclosure", () => {
+  const bioControl = html.match(/<button\b[^>]*\bclass="about-read-more"[^>]*>/i)?.[0] || "";
+
+  assert.match(bioControl, /\btype="button"/i);
+  assert.match(bioControl, /\baria-expanded="false"/i);
+  assert.match(bioControl, /\baria-controls="profile-bio-more"/i);
+  assert.match(html, /\bid="profile-bio-more"/i);
+  assert.match(customJs, /matchMedia\("\(max-width: 767px\)"\)/);
+  assert.match(customJs, /button\.setAttribute\("aria-expanded"/);
+  assert.match(customJs, /more\.setAttribute\("aria-hidden"/);
+
+  const markerIndex = css.indexOf("2026-08-28 mobile presentation pass");
+  const mobileCss = css.slice(markerIndex);
+  assert.match(mobileCss, /\.about-text\.has-mobile-disclosure \.about-text-more \{[\s\S]*?grid-template-rows:\s*0fr/);
+  assert.match(mobileCss, /\.about-text\.has-mobile-disclosure\.is-expanded \.about-text-more \{[\s\S]*?grid-template-rows:\s*1fr/);
+  assert.match(mobileCss, /\.about-text\.has-mobile-disclosure \.about-read-more \{[\s\S]*?min-height:\s*44px/);
+});
+
 test("the desktop rail floats without resizing the page body", () => {
   const railStart = css.indexOf("@media (min-width: 1400px)");
   const railEnd = css.indexOf("@media (min-width: 992px)", railStart);

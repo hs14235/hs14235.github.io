@@ -21,7 +21,7 @@ body {
   --site-black-rgb: 43, 43, 43;
   --site-blue: #7682cc;
   --site-blue-soft: #dfe5ff;
-  --site-scale: 1;
+  --site-scale: 0.9;
 }
 *{
 	font-family: inherit;
@@ -159,14 +159,23 @@ p {
   display: none;
 }
 
+.mobile-field-guide__panel--left,
+.mobile-field-guide__eyebrow {
+  display: none;
+}
+
+.mobile-field-guide__panel--right {
+  display: contents;
+}
+
 @media (min-width: 1400px) {
   .portfolio-rail {
     display: flex;
     position: fixed;
     top: 50%;
-    left: 28px;
+    left: 14px;
     z-index: 1000;
-    width: 174px;
+    width: 164px;
     padding: 22px 18px 20px;
     flex-direction: column;
     transform: translateY(-50%);
@@ -454,13 +463,22 @@ a:hover, a:active, a:focus {
   aspect-ratio: 4 / 3;
   transform: translate(-50%, -50%);
 }
-
-.hero-photo-media img {
-  display: block;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
+@media (max-width: 768px) {
+  .hero-photo-media {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    aspect-ratio: auto;
+  }
 }
+
+  .hero-photo-media img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    }
+  
 
 #home > .container {
   position: relative;
@@ -2679,7 +2697,7 @@ footer p {
   }
 
   body {
-    padding-bottom: calc(70px + env(safe-area-inset-bottom));
+    padding-bottom: calc(144px + env(safe-area-inset-bottom));
     background: #ffffff;
   }
 
@@ -2760,19 +2778,22 @@ footer p {
     outline-offset: 3px;
   }
 
-  /* Reuse the existing section rail as a thumb-friendly mobile dock. */
+  /* Reframe the section rail as a two-panel mobile field guide. */
   .portfolio-rail {
     position: fixed;
     top: auto;
-    right: 10px;
-    bottom: max(8px, env(safe-area-inset-bottom));
-    left: 10px;
+    right: 8px;
+    bottom: max(7px, env(safe-area-inset-bottom));
+    left: 8px;
     z-index: 10000;
-    display: block;
+    display: grid;
+    grid-template-columns: minmax(112px, .78fr) minmax(0, 1.5fr);
     width: auto;
-    padding: 6px;
+    min-height: 126px;
+    padding: 0;
+    overflow: hidden;
     border: 1px solid rgba(255, 255, 255, .14);
-    border-radius: 17px;
+    border-radius: 18px;
     background: rgba(24, 27, 34, .92);
     box-shadow: 0 14px 38px rgba(0, 0, 0, .24);
     backdrop-filter: blur(16px) saturate(130%);
@@ -2785,9 +2806,65 @@ footer p {
     display: none;
   }
 
-  .portfolio-rail-nav {
+  .mobile-field-guide__panel {
+    min-width: 0;
+  }
+
+  .mobile-field-guide__panel--left {
     display: flex;
-    gap: 4px;
+    padding: 14px 12px 13px;
+    flex-direction: column;
+    justify-content: space-between;
+    border-right: 1px solid rgba(255, 255, 255, .12);
+    background:
+      linear-gradient(145deg, rgba(118, 130, 204, .34), rgba(118, 130, 204, .08)),
+      rgba(22, 25, 32, .96);
+  }
+
+  .mobile-field-guide__panel--left h2 {
+    margin: 3px 0 5px;
+    color: #ffffff;
+    font-family: 'Roboto Mono', monospace;
+    font-size: clamp(21px, 6.2vw, 27px);
+    font-weight: 500;
+    line-height: 1;
+    letter-spacing: -1.2px;
+  }
+
+  .mobile-field-guide__panel--left > p:last-child {
+    margin: 0;
+    color: rgba(255, 255, 255, .7);
+    font-size: 10px;
+    line-height: 1.45;
+  }
+
+  .mobile-field-guide__panel--right {
+    display: flex;
+    min-width: 0;
+    padding: 12px 10px 10px;
+    flex-direction: column;
+    background: rgba(35, 39, 48, .96);
+  }
+
+  .mobile-field-guide__eyebrow {
+    display: block;
+    margin: 0;
+    color: rgba(223, 229, 255, .72);
+    font-family: 'Roboto Mono', monospace;
+    font-size: 8px;
+    font-weight: 500;
+    letter-spacing: 1.6px;
+    line-height: 1.2;
+    text-transform: uppercase;
+  }
+
+  .portfolio-rail-nav {
+    display: grid;
+    grid-auto-flow: column;
+    grid-template-rows: repeat(2, minmax(44px, auto));
+    grid-auto-columns: max-content;
+    gap: 4px 5px;
+    margin-top: 7px;
     overflow-x: auto;
     overscroll-behavior-x: contain;
     scrollbar-width: none;
@@ -2804,13 +2881,14 @@ footer p {
     min-height: 44px;
     align-items: center;
     gap: 6px;
-    padding: 0 13px;
-    border-radius: 12px;
+    padding: 0 10px;
+    border: 1px solid transparent;
+    border-radius: 10px;
     color: rgba(255, 255, 255, .68);
     font-family: 'Roboto Mono', monospace;
-    font-size: 9px;
+    font-size: 8px;
     font-weight: 500;
-    letter-spacing: .7px;
+    letter-spacing: .55px;
     scroll-snap-align: center;
     text-transform: uppercase;
   }
@@ -2821,8 +2899,9 @@ footer p {
   }
 
   .portfolio-rail-nav a.is-active {
-    background: #ffffff;
-    color: var(--site-black);
+    border-color: rgba(223, 229, 255, .3);
+    background: var(--site-blue-soft);
+    color: #303750;
   }
 
   .portfolio-rail-nav a.is-active span {
@@ -2831,8 +2910,8 @@ footer p {
 
   /* Hero: preserve the photograph while giving the existing copy a clear stage. */
   #home {
-    min-height: 560px;
-    height: 88svh !important;
+    min-height: 660px;
+    height: 82svh !important;
     max-height: 760px;
     align-items: stretch !important;
     background-position: 56% 58% !important;
@@ -2962,67 +3041,265 @@ footer p {
     margin-top: 14px;
   }
 
-  .about-text.has-mobile-read-more .bio-details {
-    max-height: 0;
-    overflow: hidden;
-    opacity: 0;
-    transform: translateY(-6px);
-    transition:
-      max-height .62s cubic-bezier(.22, 1, .36, 1),
-      opacity .34s ease,
-      transform .48s cubic-bezier(.22, 1, .36, 1);
+
+ 
+
+
+
+/* ==========================================================
+   ABOUT BIOGRAPHY — NATIVE READ MORE DISCLOSURE
+   Works with:
+   <details class="about-disclosure">
+     <summary class="about-disclosure-toggle">...</summary>
+     <div class="about-disclosure-content">...</div>
+   </details>
+   ========================================================== */
+
+.about-disclosure {
+  margin: 4px 0 18px;
+  color: rgba(var(--site-black-rgb), 0.6);
+  font-family: Lora, serif;
+}
+
+/* Remove the browser's default disclosure marker. */
+.about-disclosure-toggle {
+  display: inline-flex;
+  min-height: 44px;
+  margin: 0;
+  padding: 8px 10px 8px 3px;
+  align-items: center;
+  gap: 9px;
+
+  border: 0;
+  border-radius: 999px;
+  background: transparent;
+
+  color: var(--site-blue);
+  cursor: pointer;
+  font-family: "Roboto Mono", monospace;
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 1.35px;
+  line-height: 1;
+  list-style: none;
+  text-transform: uppercase;
+  user-select: none;
+
+  transition:
+    color 0.22s ease,
+    background-color 0.22s ease,
+    padding 0.22s ease;
+}
+
+.about-disclosure-toggle::-webkit-details-marker {
+  display: none;
+}
+
+.about-disclosure-toggle::marker {
+  content: "";
+}
+
+/* Portfolio-style ellipsis. */
+.about-disclosure-ellipsis {
+  position: relative;
+  top: -3px;
+
+  display: inline-grid;
+  min-width: 30px;
+  height: 26px;
+  place-items: center;
+
+  border: 1px solid rgba(118, 130, 204, 0.4);
+  border-radius: 999px;
+  background: var(--site-blue-soft);
+  color: var(--site-black);
+
+  font-family: Lora, serif;
+  font-size: 21px;
+  font-weight: 700;
+  letter-spacing: 2px;
+  line-height: 1;
+
+  transition:
+    color 0.22s ease,
+    background-color 0.22s ease,
+    border-color 0.22s ease,
+    transform 0.22s ease;
+}
+
+/* Circular plus/minus indicator. */
+.about-disclosure-icon {
+  position: relative;
+  display: inline-grid;
+  width: 24px;
+  height: 24px;
+  margin-left: 2px;
+  place-items: center;
+
+  border: 1px solid rgba(118, 130, 204, 0.55);
+  border-radius: 50%;
+
+  transition:
+    border-color 0.22s ease,
+    background-color 0.22s ease,
+    transform 0.3s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+/* Horizontal part of the plus/minus symbol. */
+.about-disclosure-icon::before {
+  content: "";
+  position: absolute;
+  width: 8px;
+  height: 1px;
+  background: currentColor;
+}
+
+/* Vertical part of the plus symbol. */
+.about-disclosure-icon::after {
+  content: "";
+  position: absolute;
+  width: 1px;
+  height: 8px;
+  background: currentColor;
+
+  transition:
+    opacity 0.2s ease,
+    transform 0.3s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+/* Portfolio-style hover state. */
+.about-disclosure-toggle:hover {
+  padding-right: 14px;
+  background: var(--site-blue-soft);
+  color: var(--site-black);
+}
+
+.about-disclosure-toggle:hover .about-disclosure-ellipsis {
+  border-color: var(--site-blue);
+  background: var(--site-blue);
+  color: #ffffff;
+  transform: translateY(-1px);
+}
+
+/* Keyboard-accessible focus state. */
+.about-disclosure-toggle:focus-visible {
+  outline: 2px solid var(--site-blue);
+  outline-offset: 4px;
+  background: var(--site-blue-soft);
+  color: var(--site-black);
+}
+
+.about-disclosure-toggle:focus-visible .about-disclosure-ellipsis {
+  border-color: var(--site-blue);
+  background: var(--site-blue);
+  color: #ffffff;
+  transform: translateY(-1px);
+}
+
+/* Closed state: hide "Show less." */
+.about-disclosure-label--less {
+  display: none;
+}
+
+/* Open state: hide "Read more." */
+.about-disclosure[open] .about-disclosure-label--more {
+  display: none;
+}
+
+/* Open state: show "Show less." */
+.about-disclosure[open] .about-disclosure-label--less {
+  display: inline;
+}
+
+/* Turn the plus into a minus when open. */
+.about-disclosure[open] .about-disclosure-icon {
+  border-color: var(--site-blue);
+  background: var(--site-blue-soft);
+  transform: rotate(180deg);
+}
+
+.about-disclosure[open] .about-disclosure-icon::after {
+  opacity: 0;
+  transform: rotate(90deg);
+}
+
+.about-disclosure[open] .about-disclosure-ellipsis {
+  border-color: rgba(118, 130, 204, 0.55);
+  background: transparent;
+  color: var(--site-blue);
+}
+
+/* Biography content. */
+.about-disclosure-content {
+  padding-top: 5px;
+}
+
+.about-disclosure-content>p {
+  margin: 0;
+  color: rgba(var(--site-black-rgb), 0.6);
+  font-family: Lora, serif;
+  font-size: 14px;
+  line-height: 1.8em;
+}
+
+.about-disclosure-content>p+p {
+  margin-top: 14px;
+}
+
+/* ==========================================================
+   MOBILE — COLLAPSIBLE BIOGRAPHY
+   ========================================================== */
+
+@media (max-width: 767px) {
+  .about-disclosure {
+    margin-top: 2px;
+    margin-bottom: 18px;
   }
 
-  .about-text.has-mobile-read-more.is-expanded .bio-details {
-    max-height: var(--bio-details-height, 720px);
-    opacity: 1;
-    transform: translateY(0);
-  }
-
-  .about-text.has-mobile-read-more .bio-read-more {
-    display: inline-flex;
+  .about-disclosure-toggle {
     min-height: 44px;
-    margin: 4px 0 0;
-    padding: 0;
-    align-items: center;
-    gap: 10px;
-    border: 0;
-    background: transparent;
-    color: var(--site-black);
-    font-family: 'Roboto Mono', monospace;
-    font-size: 11px;
-    font-weight: 700;
-    letter-spacing: 1.4px;
-    text-transform: uppercase;
   }
 
-  .about-text.has-mobile-read-more .bio-read-more-ellipsis {
-    display: inline-grid;
-    width: 34px;
-    height: 28px;
-    place-items: center;
-    border: 1px solid rgba(118, 130, 204, .4);
-    border-radius: 999px;
-    background: var(--site-blue-soft);
-    color: #4f5da9;
-    font-size: 17px;
-    line-height: 1;
-    letter-spacing: 1px;
-    transition: background .3s ease, color .3s ease, transform .3s ease;
+  .about-disclosure-content {
+    padding-top: 8px;
   }
 
-  .about-text.has-mobile-read-more .bio-read-more:hover .bio-read-more-ellipsis,
-  .about-text.has-mobile-read-more .bio-read-more:focus-visible .bio-read-more-ellipsis {
-    background: var(--site-blue);
-    color: #ffffff;
-    transform: translateY(-1px);
+  .about-disclosure-content>p {
+    color: #555961;
+    font-size: 15px;
+    line-height: 1.62;
+  }
+}
+
+/* ==========================================================
+   DESKTOP — SHOW THE COMPLETE BIOGRAPHY
+   ========================================================== */
+
+@media (min-width: 768px) {
+
+  /* Hide the Read more control on desktop. */
+  .about-disclosure>.about-disclosure-toggle {
+    display: none;
   }
 
-  .about-text.has-mobile-read-more .bio-read-more:focus-visible {
-    outline: 2px solid var(--site-blue);
-    outline-offset: 4px;
-    border-radius: 4px;
+  /*
+   * Force the details content to remain visible on desktop,
+   * even when the <details> element does not have open.
+   */
+  .about-disclosure>.about-disclosure-content {
+    display: block;
+    padding-top: 0;
   }
+}
+
+/* Respect the visitor's reduced-motion preference */
+@media (prefers-reduced-motion: reduce) {
+  .about-disclosure-toggle,
+  .about-disclosure-icon,
+  .about-disclosure-icon::after {
+    transition: none;
+  }
+}
 
   .about-btns {
     margin: 20px 0 26px;

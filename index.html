@@ -151,15 +151,26 @@
       <span class="portfolio-rail-name">Hamza<br>Salahuddin</span>
     </a>
     <span class="portfolio-rail-rule" aria-hidden="true"></span>
-    <nav class="portfolio-rail-nav" aria-label="Sections">
-      <a class="smoothScroll is-active" href="#home" data-section="home"><span>01</span> Intro</a>
-      <a class="smoothScroll" href="#service" data-section="service"><span>02</span> Profile</a>
-      <a class="smoothScroll" href="#about" data-section="about"><span>03</span> Education</a>
-      <a class="smoothScroll" href="#work" data-section="work"><span>04</span> Experience</a>
-      <a class="smoothScroll" href="#projects" data-section="projects"><span>05</span> Projects</a>
-      <a class="smoothScroll" href="#leadership" data-section="leadership"><span>06</span> Leadership</a>
-      <a class="smoothScroll" href="#contact" data-section="contact"><span>07</span> Contact</a>
-    </nav>
+
+    <div class="mobile-field-guide__panel mobile-field-guide__panel--left">
+      <p class="mobile-field-guide__eyebrow">Field Guide</p>
+      <h2>HAMZA</h2>
+      <p>Full-stack systems, backend depth, and applied AI.</p>
+    </div>
+
+    <div class="mobile-field-guide__panel mobile-field-guide__panel--right">
+      <p class="mobile-field-guide__eyebrow">Portfolio Index</p>
+      <nav class="portfolio-rail-nav" aria-label="Sections">
+        <a class="smoothScroll is-active" href="#home" data-section="home"><span>01</span> Intro</a>
+        <a class="smoothScroll" href="#service" data-section="service"><span>02</span> Profile</a>
+        <a class="smoothScroll" href="#about" data-section="about"><span>03</span> Education</a>
+        <a class="smoothScroll" href="#work" data-section="work"><span>04</span> Experience</a>
+        <a class="smoothScroll" href="#projects" data-section="projects"><span>05</span> Projects</a>
+        <a class="smoothScroll" href="#leadership" data-section="leadership"><span>06</span> Leadership</a>
+        <a class="smoothScroll" href="#contact" data-section="contact"><span>07</span> Contact</a>
+      </nav>
+    </div>
+
     <p class="portfolio-rail-note">Software engineer<br>Full-stack / backend / AI</p>
   </aside>
 
@@ -230,6 +241,7 @@
           <div class='col-md-8'>
             <div class="about-summary-layout">
               <div class="about-summary-copy">
+                <!-- Old about as it was too long lol xD --> <!-- 
                 <div class="about-text" id="profile-bio">
                   <p>
                     I’m a software engineer and Computer Science graduate from Georgia Southern University, focused on
@@ -261,7 +273,53 @@
                       reliable user-facing systems.
                     </p>
                   </div>
-
+                -->
+                  <div class="about-text">
+                    <!-- Always-visible introductory paragraph -->
+                    <p>
+                      I’m a software engineer and Computer Science graduate from Georgia Southern
+                      University, focused on full-stack, backend, and applied AI systems.
+                    </p>
+                  
+                    <!-- Collapsible portion -->
+                    <details class="about-disclosure">
+                      <summary class="about-disclosure-toggle">
+                        <span class="about-disclosure-ellipsis" aria-hidden="true">…</span>
+                  
+                        <span class="about-disclosure-label about-disclosure-label--more">
+                          Read more
+                        </span>
+                  
+                        <span class="about-disclosure-label about-disclosure-label--less">
+                          Show less
+                        </span>
+                  
+                        <span class="about-disclosure-icon" aria-hidden="true"></span>
+                      </summary>
+                  
+                      <div class="about-disclosure-content">
+                        <p>
+                          Most recently, I led a five-person Gulfstream Aerospace capstone team developing an AI-powered 3D
+                          asset-generation
+                          platform that reduced successful initial draft generation from multi-hour manual workflows to under
+                          5 minutes. The
+                          system combined local and cloud generation workflows, Blender-based mesh normalization,
+                          browser-based 3D inspection,
+                          glTF 2.0 compatibility handling, and Unreal Engine integration.
+                        </p>
+                  
+                        <p>
+                          I’ve also built Trainline, a containerized React/Django REST Framework/PostgreSQL booking platform,
+                          and
+                          meeting-to-tasks, a local-first meeting intelligence system using FastAPI, Sentence Transformers,
+                          FAISS, Ollama, MCP,
+                          SQLite, and the GitHub REST API. I’m especially interested in software that turns complex real-world
+                          workflows into
+                          reliable user-facing systems.
+                        </p>
+                      </div>
+                    </details>
+                  </div>
                   <button class="bio-read-more" type="button" aria-controls="profile-bio-details"
                     aria-expanded="false">
                     <span class="bio-read-more-ellipsis" aria-hidden="true">&hellip;</span>

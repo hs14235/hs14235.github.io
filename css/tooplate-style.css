@@ -159,15 +159,6 @@ p {
   display: none;
 }
 
-.mobile-field-guide__panel--left,
-.mobile-field-guide__eyebrow {
-  display: none;
-}
-
-.mobile-field-guide__panel--right {
-  display: contents;
-}
-
 @media (min-width: 1400px) {
   .portfolio-rail {
     display: flex;
@@ -2698,7 +2689,7 @@ footer p {
   }
 
   body {
-    padding-bottom: calc(144px + env(safe-area-inset-bottom));
+    padding-bottom: calc(70px + env(safe-area-inset-bottom));
     background: #ffffff;
   }
 
@@ -2779,22 +2770,19 @@ footer p {
     outline-offset: 3px;
   }
 
-  /* Reframe the section rail as a two-panel mobile field guide. */
+  /* Reuse the existing section rail as a thumb-friendly mobile dock. */
   .portfolio-rail {
     position: fixed;
     top: auto;
-    right: 8px;
-    bottom: max(7px, env(safe-area-inset-bottom));
-    left: 8px;
+    right: 10px;
+    bottom: max(8px, env(safe-area-inset-bottom));
+    left: 10px;
     z-index: 10000;
-    display: grid;
-    grid-template-columns: minmax(112px, .78fr) minmax(0, 1.5fr);
+    display: block;
     width: auto;
-    min-height: 126px;
-    padding: 0;
-    overflow: hidden;
+    padding: 6px;
     border: 1px solid rgba(255, 255, 255, .14);
-    border-radius: 18px;
+    border-radius: 17px;
     background: rgba(24, 27, 34, .92);
     box-shadow: 0 14px 38px rgba(0, 0, 0, .24);
     backdrop-filter: blur(16px) saturate(130%);
@@ -2807,65 +2795,9 @@ footer p {
     display: none;
   }
 
-  .mobile-field-guide__panel {
-    min-width: 0;
-  }
-
-  .mobile-field-guide__panel--left {
-    display: flex;
-    padding: 14px 12px 13px;
-    flex-direction: column;
-    justify-content: space-between;
-    border-right: 1px solid rgba(255, 255, 255, .12);
-    background:
-      linear-gradient(145deg, rgba(118, 130, 204, .34), rgba(118, 130, 204, .08)),
-      rgba(22, 25, 32, .96);
-  }
-
-  .mobile-field-guide__panel--left h2 {
-    margin: 3px 0 5px;
-    color: #ffffff;
-    font-family: 'Roboto Mono', monospace;
-    font-size: clamp(21px, 6.2vw, 27px);
-    font-weight: 500;
-    line-height: 1;
-    letter-spacing: -1.2px;
-  }
-
-  .mobile-field-guide__panel--left > p:last-child {
-    margin: 0;
-    color: rgba(255, 255, 255, .7);
-    font-size: 10px;
-    line-height: 1.45;
-  }
-
-  .mobile-field-guide__panel--right {
-    display: flex;
-    min-width: 0;
-    padding: 12px 10px 10px;
-    flex-direction: column;
-    background: rgba(35, 39, 48, .96);
-  }
-
-  .mobile-field-guide__eyebrow {
-    display: block;
-    margin: 0;
-    color: rgba(223, 229, 255, .72);
-    font-family: 'Roboto Mono', monospace;
-    font-size: 8px;
-    font-weight: 500;
-    letter-spacing: 1.6px;
-    line-height: 1.2;
-    text-transform: uppercase;
-  }
-
   .portfolio-rail-nav {
-    display: grid;
-    grid-auto-flow: column;
-    grid-template-rows: repeat(2, minmax(44px, auto));
-    grid-auto-columns: max-content;
-    gap: 4px 5px;
-    margin-top: 7px;
+    display: flex;
+    gap: 4px;
     overflow-x: auto;
     overscroll-behavior-x: contain;
     scrollbar-width: none;
@@ -2882,14 +2814,13 @@ footer p {
     min-height: 44px;
     align-items: center;
     gap: 6px;
-    padding: 0 10px;
-    border: 1px solid transparent;
-    border-radius: 10px;
+    padding: 0 13px;
+    border-radius: 12px;
     color: rgba(255, 255, 255, .68);
     font-family: 'Roboto Mono', monospace;
-    font-size: 8px;
+    font-size: 9px;
     font-weight: 500;
-    letter-spacing: .55px;
+    letter-spacing: .7px;
     scroll-snap-align: center;
     text-transform: uppercase;
   }
@@ -2900,9 +2831,8 @@ footer p {
   }
 
   .portfolio-rail-nav a.is-active {
-    border-color: rgba(223, 229, 255, .3);
-    background: var(--site-blue-soft);
-    color: #303750;
+    background: #ffffff;
+    color: var(--site-black);
   }
 
   .portfolio-rail-nav a.is-active span {
@@ -2911,8 +2841,8 @@ footer p {
 
   /* Hero: preserve the photograph while giving the existing copy a clear stage. */
   #home {
-    min-height: 660px;
-    height: 82svh !important;
+    min-height: 560px;
+    height: 88svh !important;
     max-height: 760px;
     align-items: stretch !important;
     background-position: 56% 58% !important;

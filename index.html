@@ -242,53 +242,44 @@
             <div class="about-summary-layout">
               <div class="about-summary-copy">
                 <div class="about-text">
-                    <!-- Always-visible introductory paragraph -->
-                    <p>
-                      I’m a software engineer and Computer Science graduate from Georgia Southern
-                      University, focused on full-stack, backend, and applied AI systems. My work spans REST APIs,
-                      relational data modeling, frontend applications, AI-integrated workflows, containerized deployment,
-                      and technical leadership across client-facing and independent projects.
-                    </p>
-                  
-                    <!-- Collapsible portion -->
-                    <details class="about-disclosure">
-                      <summary class="about-disclosure-toggle">
-                        <span class="about-disclosure-ellipsis" aria-hidden="true">…</span>
-                  
-                        <span class="about-disclosure-label about-disclosure-label--more">
-                          Read more
-                        </span>
-                  
-                        <span class="about-disclosure-label about-disclosure-label--less">
-                          Show less
-                        </span>
-                  
-                        <span class="about-disclosure-icon" aria-hidden="true"></span>
-                      </summary>
-                  
-                      <div class="about-disclosure-content">
-                        <p>
-                          Most recently, I led a five-person Gulfstream Aerospace capstone team developing an AI-powered 3D
-                          asset-generation
-                          platform that reduced successful initial draft generation from multi-hour manual workflows to under
-                          5 minutes. The
-                          system combined local and cloud generation workflows, Blender-based mesh normalization,
-                          browser-based 3D inspection,
-                          glTF 2.0 compatibility handling, and Unreal Engine integration.
-                        </p>
-                  
-                        <p>
-                          I’ve also built Trainline, a containerized React/Django REST Framework/PostgreSQL booking platform,
-                          and
-                          meeting-to-tasks, a local-first meeting intelligence system using FastAPI, Sentence Transformers,
-                          FAISS, Ollama, MCP,
-                          SQLite, and the GitHub REST API. I’m especially interested in software that turns complex real-world
-                          workflows into
-                          reliable user-facing systems.
-                        </p>
-                      </div>
-                    </details>
+                  <p>
+                    I’m a software engineer and Computer Science graduate from Georgia Southern University, focused on
+                    full-stack, backend,
+                    and applied AI systems. My work spans REST APIs, relational data modeling, frontend applications,
+                    AI-integrated
+                    workflows, containerized deployment, and technical leadership across client-facing and independent
+                    projects.
+                  </p>
+
+                  <div class="about-text-more" id="profile-bio-more">
+                    <div class="about-text-more-inner">
+                      <p>
+                        Most recently, I led a five-person Gulfstream Aerospace capstone team developing an AI-powered 3D
+                        asset-generation
+                        platform that reduced successful initial draft generation from multi-hour manual workflows to under
+                        5 minutes. The
+                        system combined local and cloud generation workflows, Blender-based mesh normalization,
+                        browser-based 3D inspection,
+                        glTF 2.0 compatibility handling, and Unreal Engine integration.
+                      </p>
+
+                      <p>
+                        I’ve also built Trainline, a containerized React/Django REST Framework/PostgreSQL booking platform,
+                        and
+                        meeting-to-tasks, a local-first meeting intelligence system using FastAPI, Sentence Transformers,
+                        FAISS, Ollama, MCP,
+                        SQLite, and the GitHub REST API. I’m especially interested in software that turns complex real-world
+                        workflows into
+                        reliable user-facing systems.
+                      </p>
+                    </div>
                   </div>
+
+                  <button class="about-read-more" type="button" aria-expanded="false"
+                    aria-controls="profile-bio-more" hidden>
+                    <span class="about-read-more-ellipsis" aria-hidden="true">…</span>
+                    <span class="about-read-more-label">Read more</span>
+                  </button>
                 </div>
 
                 <div class='about-btns'>

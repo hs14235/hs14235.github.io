@@ -628,13 +628,17 @@ a:hover, a:active, a:focus {
 }
 
 .about-text > p,
-.about-disclosure-content > p {
+.about-text-more-inner > p {
 	font-size:14px;
 	color:rgba(var(--site-black-rgb),.6);
 	line-height:1.8em;
 }
 .about-text{
 	margin-bottom:18px;
+}
+
+.about-read-more {
+  display: none;
 }
 .about-summary-layout {
   display: flex;
@@ -3025,7 +3029,7 @@ footer p {
   }
 
   .about-text > p,
-  .about-disclosure-content > p,
+  .about-text-more-inner > p,
   .leadership-copy > p,
   .timeline > li,
   .timeline > li > .timeline-content > p {
@@ -3034,248 +3038,61 @@ footer p {
     line-height: 1.62;
   }
 
-  .about-disclosure-content > p {
+  .about-text > p + p,
+  .about-text-more-inner > p + p {
     margin-top: 14px;
   }
 
-
- 
-
-
-
-/* ==========================================================
-   ABOUT BIOGRAPHY — NATIVE READ MORE DISCLOSURE
-   Works with:
-   <details class="about-disclosure">
-     <summary class="about-disclosure-toggle">...</summary>
-     <div class="about-disclosure-content">...</div>
-   </details>
-   ========================================================== */
-
-.about-disclosure {
-  margin: 4px 0 18px;
-  color: rgba(var(--site-black-rgb), 0.6);
-  font-family: Lora, serif;
-}
-
-/* Remove the browser's default disclosure marker. */
-.about-disclosure-toggle {
-  display: inline-flex;
-  min-height: 44px;
-  margin: 0;
-  padding: 8px 10px 8px 3px;
-  align-items: center;
-  gap: 9px;
-
-  border: 0;
-  border-radius: 999px;
-  background: transparent;
-
-  color: var(--site-blue);
-  cursor: pointer;
-  font-family: "Roboto Mono", monospace;
-  font-size: 10px;
-  font-weight: 600;
-  letter-spacing: 1.35px;
-  line-height: 1;
-  list-style: none;
-  text-transform: uppercase;
-  user-select: none;
-
-  transition:
-    color 0.22s ease,
-    background-color 0.22s ease,
-    padding 0.22s ease;
-}
-
-.about-disclosure-toggle::-webkit-details-marker {
-  display: none;
-}
-
-.about-disclosure-toggle::marker {
-  content: "";
-}
-
-/* Portfolio-style ellipsis. */
-.about-disclosure-ellipsis {
-  position: relative;
-  top: -3px;
-
-  display: inline-grid;
-  min-width: 30px;
-  height: 26px;
-  place-items: center;
-
-  border: 1px solid rgba(118, 130, 204, 0.4);
-  border-radius: 999px;
-  background: var(--site-blue-soft);
-  color: var(--site-black);
-
-  font-family: Lora, serif;
-  font-size: 21px;
-  font-weight: 700;
-  letter-spacing: 2px;
-  line-height: 1;
-
-  transition:
-    color 0.22s ease,
-    background-color 0.22s ease,
-    border-color 0.22s ease,
-    transform 0.22s ease;
-}
-
-/* Circular plus/minus indicator. */
-.about-disclosure-icon {
-  position: relative;
-  display: inline-grid;
-  width: 24px;
-  height: 24px;
-  margin-left: 2px;
-  place-items: center;
-
-  border: 1px solid rgba(118, 130, 204, 0.55);
-  border-radius: 50%;
-
-  transition:
-    border-color 0.22s ease,
-    background-color 0.22s ease,
-    transform 0.3s cubic-bezier(0.22, 1, 0.36, 1);
-}
-
-/* Horizontal part of the plus/minus symbol. */
-.about-disclosure-icon::before {
-  content: "";
-  position: absolute;
-  width: 8px;
-  height: 1px;
-  background: currentColor;
-}
-
-/* Vertical part of the plus symbol. */
-.about-disclosure-icon::after {
-  content: "";
-  position: absolute;
-  width: 1px;
-  height: 8px;
-  background: currentColor;
-
-  transition:
-    opacity 0.2s ease,
-    transform 0.3s cubic-bezier(0.22, 1, 0.36, 1);
-}
-
-/* Portfolio-style hover state. */
-.about-disclosure-toggle:hover {
-  padding-right: 14px;
-  background: var(--site-blue-soft);
-  color: var(--site-black);
-}
-
-.about-disclosure-toggle:hover .about-disclosure-ellipsis {
-  border-color: var(--site-blue);
-  background: var(--site-blue);
-  color: #ffffff;
-  transform: translateY(-1px);
-}
-
-/* Keyboard-accessible focus state. */
-.about-disclosure-toggle:focus-visible {
-  outline: 2px solid var(--site-blue);
-  outline-offset: 4px;
-  background: var(--site-blue-soft);
-  color: var(--site-black);
-}
-
-.about-disclosure-toggle:focus-visible .about-disclosure-ellipsis {
-  border-color: var(--site-blue);
-  background: var(--site-blue);
-  color: #ffffff;
-  transform: translateY(-1px);
-}
-
-/* Closed state: hide "Show less." */
-.about-disclosure-label--less {
-  display: none;
-}
-
-/* Open state: hide "Read more." */
-.about-disclosure[open] .about-disclosure-label--more {
-  display: none;
-}
-
-/* Open state: show "Show less." */
-.about-disclosure[open] .about-disclosure-label--less {
-  display: inline;
-}
-
-/* Turn the plus into a minus when open. */
-.about-disclosure[open] .about-disclosure-icon {
-  border-color: var(--site-blue);
-  background: var(--site-blue-soft);
-  transform: rotate(180deg);
-}
-
-.about-disclosure[open] .about-disclosure-icon::after {
-  opacity: 0;
-  transform: rotate(90deg);
-}
-
-.about-disclosure[open] .about-disclosure-ellipsis {
-  border-color: rgba(118, 130, 204, 0.55);
-  background: transparent;
-  color: var(--site-blue);
-}
-
-/* Biography content. */
-.about-disclosure-content {
-  padding-top: 5px;
-}
-
-.about-disclosure-content>p {
-  margin: 0;
-  color: rgba(var(--site-black-rgb), 0.6);
-  font-family: Lora, serif;
-  font-size: 14px;
-  line-height: 1.8em;
-}
-
-.about-disclosure-content>p+p {
-  margin-top: 14px;
-}
-
-/* ==========================================================
-   MOBILE — COLLAPSIBLE BIOGRAPHY
-   ========================================================== */
-
-@media (max-width: 767px) {
-  .about-disclosure {
-    margin-top: 2px;
-    margin-bottom: 18px;
+  .about-text.has-mobile-disclosure .about-text-more {
+    display: grid;
+    grid-template-rows: 0fr;
+    opacity: 0;
+    transition: grid-template-rows .48s cubic-bezier(.22, 1, .36, 1), opacity .3s ease;
   }
 
-  .about-disclosure-toggle {
+  .about-text.has-mobile-disclosure.is-expanded .about-text-more {
+    grid-template-rows: 1fr;
+    opacity: 1;
+  }
+
+  .about-text.has-mobile-disclosure .about-text-more-inner {
+    min-height: 0;
+    overflow: hidden;
+  }
+
+  .about-text.has-mobile-disclosure .about-read-more {
+    display: inline-flex;
     min-height: 44px;
+    margin: 2px 0 8px;
+    padding: 8px 3px;
+    align-items: center;
+    gap: 9px;
+    border: 0;
+    background: transparent;
+    color: var(--site-blue);
+    font-family: 'Roboto Mono', monospace;
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 1.35px;
+    line-height: 1;
+    text-transform: uppercase;
   }
 
-  .about-disclosure-content {
-    padding-top: 8px;
+  .about-read-more-ellipsis {
+    position: relative;
+    top: -3px;
+    color: var(--site-black);
+    font-family: Lora, serif;
+    font-size: 24px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    line-height: 1;
   }
 
-  .about-disclosure-content>p {
-    color: #555961;
-    font-size: 15px;
-    line-height: 1.62;
+  .about-text.has-mobile-disclosure .about-read-more:hover,
+  .about-text.has-mobile-disclosure .about-read-more:focus-visible {
+    color: var(--site-black);
   }
-}
-
-/* Respect the visitor's reduced-motion preference */
-@media (prefers-reduced-motion: reduce) {
-  .about-disclosure-toggle,
-  .about-disclosure-icon,
-  .about-disclosure-icon::after {
-    transition: none;
-  }
-}
 
   .about-btns {
     margin: 20px 0 26px;
@@ -3606,18 +3423,6 @@ footer p {
   footer p {
     font-size: 14px;
     line-height: 1.65;
-  }
-}
-
-/* Keep the complete biography visible on desktop. */
-@media (min-width: 768px) {
-  .about-disclosure > .about-disclosure-toggle {
-    display: none;
-  }
-
-  .about-disclosure > .about-disclosure-content {
-    display: block;
-    padding-top: 0;
   }
 }
 

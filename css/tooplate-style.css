@@ -628,13 +628,10 @@ a:hover, a:active, a:focus {
 }
 
 .about-text > p,
-.about-text .bio-details > p{
+.about-disclosure-content > p {
 	font-size:14px;
 	color:rgba(var(--site-black-rgb),.6);
 	line-height:1.8em;
-}
-.bio-read-more {
-  display: none;
 }
 .about-text{
 	margin-bottom:18px;
@@ -3028,7 +3025,7 @@ footer p {
   }
 
   .about-text > p,
-  .about-text .bio-details > p,
+  .about-disclosure-content > p,
   .leadership-copy > p,
   .timeline > li,
   .timeline > li > .timeline-content > p {
@@ -3037,7 +3034,7 @@ footer p {
     line-height: 1.62;
   }
 
-  .about-text .bio-details > p {
+  .about-disclosure-content > p {
     margin-top: 14px;
   }
 
@@ -3268,27 +3265,6 @@ footer p {
     color: #555961;
     font-size: 15px;
     line-height: 1.62;
-  }
-}
-
-/* ==========================================================
-   DESKTOP — SHOW THE COMPLETE BIOGRAPHY
-   ========================================================== */
-
-@media (min-width: 768px) {
-
-  /* Hide the Read more control on desktop. */
-  .about-disclosure>.about-disclosure-toggle {
-    display: none;
-  }
-
-  /*
-   * Force the details content to remain visible on desktop,
-   * even when the <details> element does not have open.
-   */
-  .about-disclosure>.about-disclosure-content {
-    display: block;
-    padding-top: 0;
   }
 }
 
@@ -3630,6 +3606,18 @@ footer p {
   footer p {
     font-size: 14px;
     line-height: 1.65;
+  }
+}
+
+/* Keep the complete biography visible on desktop. */
+@media (min-width: 768px) {
+  .about-disclosure > .about-disclosure-toggle {
+    display: none;
+  }
+
+  .about-disclosure > .about-disclosure-content {
+    display: block;
+    padding-top: 0;
   }
 }
 

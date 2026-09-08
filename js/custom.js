@@ -174,65 +174,6 @@
     });
   }
 
-  function initBioReadMore() {
-    var bio = document.getElementById("profile-bio");
-    var details = document.getElementById("profile-bio-details");
-    var button = bio ? bio.querySelector(".bio-read-more") : null;
-    var label = button ? button.querySelector(".bio-read-more-label") : null;
-    var mobileQuery = window.matchMedia("(max-width: 767px)");
-
-    if (!bio || !details || !button || !label) {
-      return;
-    }
-
-    function setExpanded(expanded) {
-      bio.classList.toggle("is-expanded", expanded);
-      button.setAttribute("aria-expanded", expanded ? "true" : "false");
-      details.setAttribute("aria-hidden", expanded ? "false" : "true");
-      label.textContent = expanded ? "Read less" : "Read more";
-
-      if (expanded) {
-        bio.style.setProperty("--bio-details-height", details.scrollHeight + "px");
-      }
-    }
-
-    function syncMobileMode() {
-      if (mobileQuery.matches) {
-        bio.classList.add("has-mobile-read-more");
-        setExpanded(false);
-        return;
-      }
-
-      bio.classList.remove("has-mobile-read-more", "is-expanded");
-      bio.style.removeProperty("--bio-details-height");
-      button.setAttribute("aria-expanded", "false");
-      details.removeAttribute("aria-hidden");
-      label.textContent = "Read more";
-    }
-
-    button.addEventListener("click", function () {
-      if (!mobileQuery.matches) {
-        return;
-      }
-
-      setExpanded(button.getAttribute("aria-expanded") !== "true");
-    });
-
-    window.addEventListener("resize", function () {
-      if (mobileQuery.matches && bio.classList.contains("is-expanded")) {
-        bio.style.setProperty("--bio-details-height", details.scrollHeight + "px");
-      }
-    });
-
-    if (typeof mobileQuery.addEventListener === "function") {
-      mobileQuery.addEventListener("change", syncMobileMode);
-    } else {
-      mobileQuery.addListener(syncMobileMode);
-    }
-
-    syncMobileMode();
-  }
-
   function initPortfolioNavigation() {
     var progressBar = document.getElementById("reading-progress-bar");
     var portfolioRail = document.querySelector(".portfolio-rail");
@@ -357,7 +298,6 @@
   initRevealSystem();
   initCriticalReveal();
   initProjectReadMore();
-  initBioReadMore();
   initPortfolioNavigation();
 
   var form = document.getElementById("contact-form");

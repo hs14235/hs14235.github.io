@@ -237,7 +237,11 @@
     var progressBar = document.getElementById("reading-progress-bar");
     var portfolioRail = document.querySelector(".portfolio-rail");
     var bioDescription = document.querySelector("#service .about-text");
+    var bioDisclosure = bioDescription ? bioDescription.querySelector(".about-disclosure") : null;
+    var mobileRailQuery = window.matchMedia("(max-width: 767px)");
     var desktopRailQuery = window.matchMedia("(min-width: 1400px)");
+    // 0.70 reveals the mobile Field Guide when the bio's bottom reaches 70% of the viewport height.
+    var mobileRailRevealPoint = 0.50;
     var navLinks = document.querySelectorAll(".portfolio-rail-nav a[data-section]");
     var sections = document.querySelectorAll("section[id]");
 
@@ -252,12 +256,15 @@
       progressBar.style.width = Math.min(100, Math.max(0, progress)) + "%";
 
       if (portfolioRail && bioDescription) {
+        var isMobileRail = mobileRailQuery.matches;
         var isDesktopRail = desktopRailQuery.matches;
-        var hasPassedBio = bioDescription.getBoundingClientRect().bottom <= window.innerHeight * 0.7;
-        var shouldShowRail = !isDesktopRail || hasPassedBio;
+        var shouldWaitForBio = isMobileRail || isDesktopRail;
+        var revealPoint = isMobileRail ? mobileRailRevealPoint : 0.7;
+        var hasPassedBio = bioDescription.getBoundingClientRect().bottom <= window.innerHeight * revealPoint;
+        var shouldShowRail = !shouldWaitForBio || hasPassedBio;
 
         portfolioRail.classList.toggle("is-visible", shouldShowRail);
-        portfolioRail.setAttribute("aria-hidden", isDesktopRail && !shouldShowRail ? "true" : "false");
+        portfolioRail.setAttribute("aria-hidden", shouldShowRail ? "false" : "true");
       }
 
       var activeSection = sections[0].id;
@@ -285,6 +292,9 @@
     window.addEventListener("scroll", updateNavigation, { passive: true });
     getPageScrollRoot().addEventListener("scroll", updateNavigation, { passive: true });
     window.addEventListener("resize", updateNavigation);
+    if (bioDisclosure) {
+      bioDisclosure.addEventListener("toggle", updateNavigation);
+    }
     updateNavigation();
   }
 

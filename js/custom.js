@@ -248,8 +248,8 @@
         var isMobileRail = mobileRailQuery.matches;
         var hasPassedBio = bioDescription.getBoundingClientRect().bottom <= window.innerHeight * mobileRailRevealPoint;
         // The desktop rail is always available; only the mobile dock waits until the bio has been read.
-        var shouldShowRail = !isMobileRail || hasPassedBio;
-
+        var shouldShowRail = !isMobileRail ? hasPassedBio : (scrollRoot.scrollTop > 300);
+        
         portfolioRail.classList.toggle("is-visible", shouldShowRail);
         portfolioRail.setAttribute("aria-hidden", shouldShowRail ? "false" : "true");
       }

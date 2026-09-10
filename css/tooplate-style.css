@@ -21,7 +21,7 @@ body {
   --site-black-rgb: 43, 43, 43;
   --site-blue: #7682cc;
   --site-blue-soft: #dfe5ff;
-  --site-scale: 0.9;
+  --site-scale: 0.95;
 }
 *{
 	font-family: inherit;

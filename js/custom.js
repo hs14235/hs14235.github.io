@@ -230,8 +230,10 @@
     var bioDisclosure = bioDescription ? bioDescription.querySelector(".about-disclosure") : null;
     var mobileRailQuery = window.matchMedia("(max-width: 767px)");
     var desktopRailQuery = window.matchMedia("(min-width: 1400px)");
-    // 0.70 reveals the mobile Field Guide when the bio's bottom reaches 70% of the viewport height.
+    // 0.50 reveals the mobile navigation when the bio's bottom reaches 50% of the viewport height.
     var mobileRailRevealPoint = 0.50;
+    // 0.70 reveals the desktop rail when the bio's bottom reaches 70% of the viewport height.
+    var desktopRailRevealPoint = 0.70;
     var navLinks = document.querySelectorAll(".portfolio-rail-nav a[data-section]");
     var sections = document.querySelectorAll("section[id]");
 
@@ -249,7 +251,7 @@
         var isMobileRail = mobileRailQuery.matches;
         var isDesktopRail = desktopRailQuery.matches;
         var shouldWaitForBio = isMobileRail || isDesktopRail;
-        var revealPoint = isMobileRail ? mobileRailRevealPoint : 0.7;
+        var revealPoint = isMobileRail ? mobileRailRevealPoint : desktopRailRevealPoint;
         var hasPassedBio = bioDescription.getBoundingClientRect().bottom <= window.innerHeight * revealPoint;
         var shouldShowRail = !shouldWaitForBio || hasPassedBio;
 

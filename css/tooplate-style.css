@@ -159,15 +159,15 @@ p {
   display: none;
 }
 
-@media (min-width: 1400px) {
+@media (min-width: 1200px) {
   .portfolio-rail {
     display: flex;
     position: fixed;
     top: 50%;
-    left: 14px;
+    left: 8px;
     z-index: 1000;
-    width: 164px;
-    padding: 22px 18px 20px;
+    width: 132px;
+    padding: 18px 12px 16px;
     flex-direction: column;
     transform: translateY(-50%);
     border: 1px solid rgba(43,43,43,.12);
@@ -274,6 +274,15 @@ p {
     padding-top: 14px;
     border-top: 1px solid rgba(43,43,43,.12);
     color: rgba(43,43,43,.48);
+  }
+}
+
+@media (min-width: 1400px) {
+  .portfolio-rail {
+    display: flex;
+    left: 14px;
+    width: 164px;
+    padding: 22px 18px 20px;
   }
 }
 

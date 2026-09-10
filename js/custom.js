@@ -229,7 +229,7 @@
     var bioDescription = document.querySelector("#service .about-text");
     var bioDisclosure = bioDescription ? bioDescription.querySelector(".about-disclosure") : null;
     var mobileRailQuery = window.matchMedia("(max-width: 767px)");
-    var desktopRailQuery = window.matchMedia("(min-width: 1400px)");
+    var desktopRailQuery = window.matchMedia("(min-width: 1200px)");
     // 0.50 reveals the mobile navigation when the bio's bottom reaches 50% of the viewport height.
     var mobileRailRevealPoint = 0.50;
     // 0.70 reveals the desktop rail when the bio's bottom reaches 70% of the viewport height.

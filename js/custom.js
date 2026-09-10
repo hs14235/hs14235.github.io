@@ -229,11 +229,8 @@
     var bioDescription = document.querySelector("#service .about-text");
     var bioDisclosure = bioDescription ? bioDescription.querySelector(".about-disclosure") : null;
     var mobileRailQuery = window.matchMedia("(max-width: 767px)");
-    var desktopRailQuery = window.matchMedia("(min-width: 1200px)");
-    // 0.50 reveals the mobile navigation when the bio's bottom reaches 50% of the viewport height.
-    var mobileRailRevealPoint = 0.50;
-    // 0.70 reveals the desktop rail when the bio's bottom reaches 70% of the viewport height.
-    var desktopRailRevealPoint = 0.70;
+    // 0.70 reveals the mobile navigation when the bio's bottom reaches 70% of the viewport height.
+    var mobileRailRevealPoint = 0.70;
     var navLinks = document.querySelectorAll(".portfolio-rail-nav a[data-section]");
     var sections = document.querySelectorAll("section[id]");
 
@@ -249,11 +246,9 @@
 
       if (portfolioRail && bioDescription) {
         var isMobileRail = mobileRailQuery.matches;
-        var isDesktopRail = desktopRailQuery.matches;
-        var shouldWaitForBio = isMobileRail || isDesktopRail;
-        var revealPoint = isMobileRail ? mobileRailRevealPoint : desktopRailRevealPoint;
-        var hasPassedBio = bioDescription.getBoundingClientRect().bottom <= window.innerHeight * revealPoint;
-        var shouldShowRail = !shouldWaitForBio || hasPassedBio;
+        var hasPassedBio = bioDescription.getBoundingClientRect().bottom <= window.innerHeight * mobileRailRevealPoint;
+        // The desktop rail is always available; only the mobile dock waits until the bio has been read.
+        var shouldShowRail = !isMobileRail || hasPassedBio;
 
         portfolioRail.classList.toggle("is-visible", shouldShowRail);
         portfolioRail.setAttribute("aria-hidden", shouldShowRail ? "false" : "true");

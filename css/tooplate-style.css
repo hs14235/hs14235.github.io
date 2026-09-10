@@ -22,6 +22,7 @@ body {
   --site-blue: #7682cc;
   --site-blue-soft: #dfe5ff;
   --site-scale: 0.95;
+  --mobile-site-scale: 0.95;
 }
 *{
 	font-family: inherit;
@@ -2686,8 +2687,19 @@ footer p {
 /* Mobile-only enhancements retained after restoring the pre-Ayoti presentation. */
 @media (max-width: 767px) {
   body {
+    zoom: var(--mobile-site-scale);
     padding-bottom: calc(70px + env(safe-area-inset-bottom));
+
   }
+  #service > .container > .row > .row {
+  margin-left: 0;
+  margin-right: 0;
+ }
+
+ #service > .container > .row > .row > [class*="col-"] {
+  padding-left: 18px;
+  padding-right: 18px;
+}
 
   section[id] {
     scroll-margin-top: 12px;

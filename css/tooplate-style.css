@@ -2878,3 +2878,32 @@ footer p {
     transform: none !important;
   }
 }
+
+/* 2026-08-28 mobile presentation pass */
+@media (max-width: 767px) {
+  .portfolio-rail {
+    position: fixed;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    top: auto;
+    z-index: 1000;
+  }
+
+  #contact .form-floating label {
+    order: -1;
+  }
+
+  #service,
+  #about,
+  #work,
+  #projects,
+  #leadership,
+  #contact {
+    padding-top: 52px;
+  }
+
+  #home {
+    height: 88svh !important;
+  }
+}

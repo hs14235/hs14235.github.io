@@ -54,6 +54,22 @@
 
     scrollAnimationFrame = window.requestAnimationFrame(step);
   }
+  
+  function initOpeningScroll() { 
+    var profileSection = document.getElementById("service");
+    var scrollRoot = getPageScrollRoot();
+
+    if (!profileSection || window.location.hash || scrollRoot.scrollTop > 0) {
+      return;
+    }
+
+    window.setTimeout(function () {
+      var targetTop = 
+        profileSection.getBoundingClientRect().top + scrollRoot.scrollTop - 5;
+
+      animatePageScroll(scrollRoot, Math.max(0, targetTop));
+    }, 500);
+  }
 
   function initRevealSystem() {
     if (prefersReducedMotion()) {
@@ -349,6 +365,7 @@
       $("#contact").parallax("50%", 10);
     }
   }
+  initOpeningScroll();
   initParallax();
 
   initRevealSystem();

@@ -1,15 +1,15 @@
 # Hamza Salahuddin - Personal Portfolio Website
 
-[![Live Site](https://img.shields.io/badge/Live-hs14235.github.io-blue)](https://hs14235.github.io/)
-[![License](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
+[(https://img.shields.io/badge/Live-hs14235.github.io-blue)](https://hs14235.github.io/)
+[(https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
 
-## 🚀 Overview
+## Overview
 
 This is my personal portfolio website showcasing my experience, projects, and skills as a Computer Science student and ACM Vice President at Georgia Southern University.
 
 **Live Site:** [https://hs14235.github.io/](https://hs14235.github.io/)
 
-## 💻 Tech Stack
+## Tech Stack
 
 - **Frontend:** HTML5, CSS3, JavaScript (ES5+)
 - **Framework:** Bootstrap 3.3.7
@@ -24,18 +24,18 @@ This is my personal portfolio website showcasing my experience, projects, and sk
 - **Form Handling:** Formspree
 - **Hosting:** GitHub Pages
 
-## 🎯 Features
+## Features
 
-- ✅ Responsive design (mobile, tablet, desktop)
-- ✅ Smooth scroll navigation
-- ✅ Parallax effects on desktop
-- ✅ Animated sections with WOW.js
-- ✅ Contact form with spam protection
-- ✅ SEO optimized with structured data (JSON-LD)
-- ✅ Performance optimized (resource hints, lazy loading)
-- ✅ Accessibility features (ARIA labels, semantic HTML)
+-  Responsive design (mobile, tablet, desktop)
+-  Smooth scroll navigation
+-  Parallax effects on desktop
+-  Animated sections with WOW.js
+-  Contact form with spam protection
+-  SEO optimized with structured data (JSON-LD)
+-  Performance optimized (resource hints, lazy loading)
+-  Accessibility features (ARIA labels, semantic HTML)
 
-## 📁 Project Structure
+## Project Structure
 
 ```
 hs14235.github.io/
@@ -54,7 +54,7 @@ hs14235.github.io/
 └── README.md
 ```
 
-## 🛠️ Development
+## Development
 
 ### Prerequisites
 
@@ -90,7 +90,7 @@ php -S localhost:8000
 4. Test locally before committing
 5. Push to GitHub - changes go live automatically via GitHub Pages
 
-## 🎨 Customization
+## Customization
 
 To customize this portfolio for your own use:
 
@@ -101,7 +101,7 @@ To customize this portfolio for your own use:
 5. Update social media links
 6. Change Formspree form endpoint in contact section
 
-## 📊 Performance Optimizations
+## Performance Optimizations
 
 - Resource hints (preconnect, dns-prefetch) for external resources
 - Deferred JavaScript loading for non-critical scripts
@@ -110,20 +110,20 @@ To customize this portfolio for your own use:
 - CSS animations for smooth user experience
 - Semantic HTML for better SEO
 
-## 📄 License
+## License
 
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
-## 🙏 Acknowledgments
+## Acknowledgments
 
 This website was built using the following free HTML/CSS templates:
 - [N5 Template](https://www.free-css.com/free-css-templates/page237/n5)
 - [Tooplate Kalay](http://www.tooplate.com/view/2087-kalay)
 
-## 📧 Contact
+## Contact
 
 - **Email:** rally2hamza@gmail.com
-- **LinkedIn:** [hamza-salahuddin-551753219](https://www.linkedin.com/in/hamza-salahuddin-551753219/)
+- **LinkedIn:** [hamza-salahuddin-551753219](https://www.linkedin.com/in/mrbesetti)
 - **GitHub:** [@hs14235](https://github.com/hs14235)
 
 ---

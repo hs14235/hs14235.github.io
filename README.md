@@ -5,7 +5,7 @@
 
 ## Overview
 
-This is my personal portfolio website showcasing my experience, projects, and skills as a Computer Science student and ACM Vice President at Georgia Southern University.
+This is my personal portfolio website showcasing my experience, projects, and skills as a Computer Science graduate and ACM Vice President at Georgia Southern University.
 
 **Live Site:** [https://hs14235.github.io/](https://hs14235.github.io/)
 
@@ -122,8 +122,8 @@ This website was built using the following free HTML/CSS templates:
 
 ## Contact
 
-- **Email:** rally2hamza@gmail.com
-- **LinkedIn:** [hamza-salahuddin-551753219](https://www.linkedin.com/in/mrbesetti)
+- **Email:** mazeadone@gmail.com
+- **LinkedIn:** [mrbesetti](https://www.linkedin.com/in/mrbesetti)
 - **GitHub:** [@hs14235](https://github.com/hs14235)
 
 ---

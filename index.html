@@ -234,7 +234,7 @@
                     full-stack, backend,
                     and applied AI systems. My work spans REST APIs, relational data modeling, frontend applications,
                     AI-integrated
-                    workflows, containerized deployment, and technical leadership across client-facing and independent
+                    workflows, containerized deployment, and technical leadership across sponsor-facing and independent
                     projects.
                   </p>
 
@@ -353,7 +353,7 @@
           <li>
             <div class='wow fadeInUp timeline-content' data-wow-delay="0.1s">
               <h4>Georgia Military College</h4>
-              <em><span> Associate of Science, Computer Science | Associate’s Degree, General Studies </span><span> |
+              <em><span>Associate of Science, Computer Science</span><span> |
                 </span><span>2020–2022</span></em>
             </div>
           </li>
@@ -361,7 +361,7 @@
           <li>
             <div class='wow fadeInUp timeline-content' data-wow-delay="0.1s">
               <h4>Birkerød Gymnasium</h4>
-              <em><span>IGCSE Diploma</span> <span> | </span> <span>2017–2018</span></em>
+              <em><span>Pearson Edexcel International GCSE (English Language, Mathematics)</span> <span> | </span> <span>2017–2018</span></em>
             </div>
           </li>
         </ul>
@@ -504,10 +504,8 @@
                 <span>2022–2023</span>
               </em>
               <ul style="list-style-type:disc; margin-left:1rem">
-                <li>Trained a 10+ member dining services team, improving efficiency and safety compliance</li>
-                <li>Streamlined inventory management, reducing shortages by implementing better pathways across the
-                  dining hall and minimizing waste</li>
-                <li>Oversaw high-volume operations, ensuring customer satisfaction and service quality</li>
+                <li>Led and trained a 10+ member dining-services team in high-volume operations, covering service,
+                  inventory, and safety.</li>
               </ul>
             </div>
           </li>
@@ -523,9 +521,9 @@
                 <span>2019–2020</span>
               </em>
               <ul style="list-style-type:disc; margin-left:1rem">
-                <li>Conducted research on industry trends and competitor performance to support strategic decisions</li>
-                <li>Gained exposure to corporate governance processes and financial management practices</li>
-                <li>Assisted staff during meetings with government bodies, enhancing knowledge of operations</li>
+                <li>Updated Excel records for client companies that were developing or scaling.</li>
+                <li>Accompanied agents to government offices to file client companies' paperwork, such as employee,
+                  tax, and location or name changes.</li>
               </ul>
             </div>
           </li>
@@ -541,11 +539,10 @@
       <div class="row">
         <div class="wow fadeInUp section-title" data-wow-delay="0.2s">
           <h2>Projects</h2>
-          <p>The Pandora's Box — source code, attribution, that kinda stuff really</p>
+          <p>Selected work, with live demos and source code where available.</p>
         </div>
 
         <div class="col-md-4 col-sm-6 wow fadeInUp" data-wow-delay="0.2s">
-          <a target="_blank" rel="noopener noreferrer" href="https://github.com/hs14235/Trainline">
             <div class="service-thumb">
               <i class="fa fa-train" style="font-size:45px; padding-left:15px;"></i>
               <h4 class="white-color">Trainline</h4>
@@ -572,8 +569,15 @@
                 <span class="skill">Docker</span>
                 <span class="skill">PostgreSQL</span>
               </div>
+              <div class="project-private-meta">
+                <div class="project-private-links">
+                  <a class="project-private-link" target="_blank" rel="noopener noreferrer"
+                    href="https://hs14235-trainline-web-demo.onrender.com">Live Demo</a>
+                  <a class="project-private-link" target="_blank" rel="noopener noreferrer"
+                    href="https://github.com/hs14235/Trainline">Source Code</a>
+                </div>
+              </div>
             </div>
-          </a>
         </div>
 
         <div class="col-md-4 col-sm-6 wow fadeInUp" data-wow-delay="0.22s">
@@ -649,9 +653,7 @@
               Led a five-person team developing an AI-assisted full-stack 3D asset-generation platform as a Georgia
               Southern capstone sponsored by Gulfstream Aerospace. A FastAPI backend orchestrates
               asynchronous
-              generation workflows across local TRELLIS and TripoSR models and cloud-based ModelsLab integration, with
-              optional
-              OpenAI-powered prompt enhancement for text inputs. <br>
+              generation workflows across local TRELLIS and TripoSR models and cloud-based ModelsLab integration. <br>
 
               After generation, assets move through automated Blender normalization for centering, grounding,
               scale/orientation correction,
@@ -661,21 +663,19 @@
 
               Designers can inspect geometry, dimensions, normalization metadata, and GLB/glTF material-readiness
               information before
-              exporting cleaned assets into Unreal Engine through Remote Control API and Python editor automation.
+              exporting cleaned assets into Unreal Engine through the Web Remote Control API.
               <br><br>
 
               <b> Features </b> <br>
               • FastAPI backend for async generation orchestration <br>
               • TRELLIS, TripoSR, and ModelsLab for text-to-3D and image-to-3D workflows <br>
-              • Optional OpenAI-powered prompt enhancement for text inputs <br>
               • Automated Blender normalization for grounding, transforms, pivot alignment, and Z-up orientation <br>
               • React, TypeScript, and Three.js Mesh Inspector for geometry and material-readiness review <br>
-              • Unreal Engine export through Web Remote Control API and Python editor automation with compatibility
-              safeguards <br>
+              • Unreal Engine export through the Web Remote Control API, with a connection test, automatic ground
+              alignment, and a fallback for unsupported EXT_texture_webp textures <br>
             </p>
             <div class="skill-container">
               <span class="skill">Unreal Engine 5</span>
-              <span class="skill">OpenAI API</span>
               <span class="skill">TRELLIS</span>
               <span class="skill">FastAPI</span>
               <span class="skill">ModelsLab/TripoSR</span>
@@ -736,11 +736,12 @@
               or LinkedIn. It is deployed on Render with Neon PostgreSQL and ships only after CI passes. <br><br>
 
               <b> Highlights </b> <br>
-              • Durable PostgreSQL job queue with SKIP LOCKED claims, leases, and capped retries <br>
+              • Durable PostgreSQL job queue with SKIP LOCKED claims, 90-second leases, and capped retries <br>
               • Approval bound to the exact previewed payload; timed-out writes are marked uncertain, never resent <br>
-              • Advisory-locked migrations and spoof-resistant rate limiting <br>
-              • Extraction evaluation harness: F1 raised from 0.74 to 0.86 <br>
-              • Backend, frontend, and Playwright browser tests in CI <br>
+              • Advisory-locked migrations; encrypted OAuth tokens, origin and CSRF checks, and sign-in throttling <br>
+              • Rules-based extraction F1 raised from 0.74 to 0.86 on 17 development cases (0.62 to 0.90 held out) <br>
+              • 539 backend and 204 frontend unit tests passing locally (Oct 2026), plus Playwright browser journeys
+              and screenshot baselines in CI on every PR <br>
             </p>
 
             <div class="skill-container">
@@ -922,7 +923,7 @@
           <div class="critical-reveal wow fadeInUp section-title" data-reveal-margin="0px 0px 20% 0px"
             data-wow-delay="0.08s" data-wow-duration="0.48s" data-wow-offset="120">
             <h2>Get in touch</h2>
-            <p>Stars Abound — Feel free to contact about anything.</p>
+            <p>Open to entry-level software engineering roles. Email or LinkedIn is the fastest way to reach me.</p>
           </div>
         </div>
 

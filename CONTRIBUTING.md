@@ -128,8 +128,8 @@ Before submitting a pull request, ensure:
 ## 📧 Contact
 
 For questions or discussions:
-- **Email**: rally2hamza@gmail.com
-- **LinkedIn**: [Hamza Salahuddin](https://www.linkedin.com/in/hamza-salahuddin-551753219/)
+- **Email**: mazeadone@gmail.com
+- **LinkedIn**: [Hamza Salahuddin](https://www.linkedin.com/in/mrbesetti)
 - **GitHub Issues**: For bug reports and feature requests
 
 ## 📄 License
